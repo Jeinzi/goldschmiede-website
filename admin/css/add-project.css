@@ -1,0 +1,21 @@
+.noRightPadding {
+	padding-right: 0;
+}
+
+.noLeftPadding {
+	padding-left: 0;
+}
+
+@media (max-width: 978px) {
+	.noLeftPaddingPhone {
+		padding-left: 0;
+	}
+}
+
+.fullWidth {
+	width: 100%;
+}
+
+.form-control.datepicker {
+	padding-left: 12px;
+}
