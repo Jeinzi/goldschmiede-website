@@ -1,0 +1,17 @@
+.well-known/
+img/
+messages/
+
+password
+README.md
+index-content.html
+
+svg/*
+!svg/check-circle-fill-white.svg
+!svg/x-white.svg
+!svg/cloud-upload-fill.svg
+!svg/person-fill.svg
+!svg/key-fill.svg
+!svg/plus-square.svg
+!svg/cart.svg
+!svg/x.svg
