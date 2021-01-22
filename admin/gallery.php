@@ -83,9 +83,9 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 									Titel
 								</div>
 							</div>
-							<input type="text" class="form-control" placeholder="" aria-label="Titel">
+							<input type="text" class="form-control" placeholder="" aria-label="Titel" data-db-path="galleryImages.title">
 							<div class="input-group-append">
-								<button class="btn btn-outline-input" tabindex="-1">
+								<button class="btn btn-outline-input button-upload" tabindex="-1">
 									<img src="/svg/cloud-upload-fill.svg">
 								</button>
 							</div>
@@ -97,9 +97,9 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 									Untertitel
 								</div>
 							</div>
-							<textarea class="form-control" placeholder="" aria-label="Untertitel"></textarea>
+							<textarea class="form-control" placeholder="" aria-label="Untertitel" data-db-path="galleryImages.subtitle"></textarea>
 							<div class="input-group-append">
-								<button class="btn btn-outline-input" tabindex="-1">
+								<button class="btn btn-outline-input button-upload" tabindex="-1">
 									<img src="/svg/cloud-upload-fill.svg">
 								</button>
 							</div>
@@ -109,5 +109,11 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 			</div>
 		</div>
 	</div>
+<script src="js/uploadfield-bindings.js?v=<?php echo time();?>"></script><!-- TODO -->
+<script>
+$('.input-group-append .button-upload').each(function() {
+	fillInputField($(this), 1);
+})
+</script>
 </body>
 </html>

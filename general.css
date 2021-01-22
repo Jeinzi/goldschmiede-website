@@ -1,5 +1,8 @@
-.main-heading {
+h1,h2,h3,h4,h5,h6 {
     font-family: serif;
+}
+
+.main-heading {
     padding-bottom: 5px;
     padding-top: 2%;
     margin-bottom: 20px;
