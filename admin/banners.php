@@ -15,7 +15,6 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 		include("php/head.php");
 		include("../php/general.php");
 	?>
-	<script src="js/banner-functions.js?v=<?php echo time();?>"></script><!-- TODO -->
 </head>
 <body>
 <?php
@@ -79,13 +78,13 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 					<div class="col-12 col-lg-8 col-xl-7">
 						<div class="input-group mb-2">
 							<div class="input-group-prepend">
-								<div class="input-group-text">
+								<div id="banner-title-prepend" class="input-group-text">
 									Titel
 								</div>
 							</div>
-							<input type="text" id="input-title" class="form-control" aria-label="Titel">
+							<input type="text" id="input-title" class="form-control" aria-labelledby="banner-title-prepend" data-db-path="banners.title">
 							<div class="input-group-append">
-								<button class="btn btn-outline-input" tabindex="-1">
+								<button class="btn btn-outline-input button-upload" tabindex="-1">
 									<img src="/svg/cloud-upload-fill.svg">
 								</button>
 							</div>
@@ -93,13 +92,13 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 
 						<div class="input-group mb-4">
 							<div class="input-group-prepend">
-								<div class="input-group-text">
+								<div id="banner-subtitle-prepend" class="input-group-text">
 									Untertitel
 								</div>
 							</div>
-							<textarea id="input-subtitle" class="form-control" aria-label="Untertitel"></textarea>
+							<textarea id="input-subtitle" class="form-control" aria-labelledby="banner-subtitle-prepend" data-db-path="banners.subtitle"></textarea>
 							<div class="input-group-append">
-								<button class="btn btn-outline-input">
+								<button class="btn btn-outline-input button-upload">
 									<img src="/svg/cloud-upload-fill.svg">
 								</button>
 							</div>
@@ -118,14 +117,43 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 			</div>
 		</div>
 	</div>
-<script src="js/banner-bindings.js?v=<?php echo time();?>"></script><!-- TODO -->
+<script src="js/uploadfield-bindings.js?v=<?php echo time();?>"></script><!-- TODO -->
+<script src="js/banner.js?v=<?php echo time();?>"></script><!-- TODO -->
 <script>
+	// Hide empty lists and choose the first project
+	// in the first visible list to be active.
+	// TODO does nothing currently
+	var areBannersListed = true;
+	var buttonsListed = $('#listGroupListed').children('button').length;
+	var buttonsUnlisted = $('#listGroupUnlisted').children('button').length;
+
+	if(buttonsListed != "")
+	{
+		$('#listGroupListed').children('button.list-group-item').first().addClass('active');
+		if(buttonsUnlisted == "") {
+			$('#listGroupUnlisted').hide();
+		}
+	}
+	else if(buttonsListed == "" && buttonsUnlisted != "")
+	{
+		$('#listGroupUnlisted').children('button.list-group-item').first().addClass('active');
+		$('#listGroupListed').hide();
+	}
+	else if(buttonsListed == "" && buttonsUnlisted == "")
+	{
+		noProjectsDetected();
+		//areBannersListed = false;
+	}
+
+
 	// If there are banners listed, get the active one's id
-	// and fill in the banner info. The variable areBannersListed is defined
-	// in banner-loading.js.
-	if(true/* areBannersListed TODO*/) {
-		var $bannerId = $('a.list-group-item.list-group-item-primary').text();
-		getAndUpdateData($bannerId);
+	// and fill in the banner info.
+	// Load data from server and display it in input fields.
+	if(areBannersListed) {
+		var bannerId = $('a.list-group-item.list-group-item-primary').text();
+		$('.input-group-append .button-upload').each(function() {
+			fillInputField($(this), bannerId);
+		})
 	}
 </script>
 </body>

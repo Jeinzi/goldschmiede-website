@@ -22,7 +22,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-12">
-			<h1>Einstellungen</h1>
+			<h1 class="main-heading border-bottom">Einstellungen</h1>
 			<h2>Impressum</h2>
 		</div>
 	</div>
@@ -34,9 +34,9 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 						Name
 					</div>
 				</div>
-				<input type="text" class="form-control" aria-labelledby="name-prepend">
+				<input type="text" class="form-control" aria-labelledby="name-prepend" data-db-path="imprint.name">
 				<div class="input-group-append">
-					<button class="btn btn-outline-input" tabindex="-1">
+					<button class="btn btn-outline-input button-upload" tabindex="-1">
 						<img src="/svg/cloud-upload-fill.svg">
 					</button>
 				</div>
@@ -49,9 +49,9 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 						Adresse
 					</div>
 				</div>
-				<input type="text" class="form-control" aria-labelledby="address-prepend">
+				<input type="text" class="form-control" aria-labelledby="address-prepend" data-db-path="imprint.street">
 				<div class="input-group-append">
-					<button class="btn btn-outline-input" tabindex="-1">
+					<button class="btn btn-outline-input button-upload" tabindex="-1">
 						<img src="/svg/cloud-upload-fill.svg">
 					</button>
 				</div>
@@ -64,9 +64,9 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 						Stadt
 					</div>
 				</div>
-				<input type="text" class="form-control" aria-labelledby="city-prepend">
+				<input type="text" class="form-control" aria-labelledby="city-prepend" data-db-path="imprint.city">
 				<div class="input-group-append">
-					<button class="btn btn-outline-input" tabindex="-1">
+					<button class="btn btn-outline-input button-upload" tabindex="-1">
 						<img src="/svg/cloud-upload-fill.svg">
 					</button>
 				</div>
@@ -79,9 +79,9 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 						Telefon
 					</div>
 				</div>
-				<input type="text" class="form-control" aria-labelledby="phone-prepend">
+				<input type="text" class="form-control" aria-labelledby="phone-prepend" data-db-path="imprint.phone">
 				<div class="input-group-append">
-					<button class="btn btn-outline-input" tabindex="-1">
+					<button class="btn btn-outline-input button-upload" tabindex="-1">
 						<img src="/svg/cloud-upload-fill.svg">
 					</button>
 				</div>
@@ -94,9 +94,9 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 						E-Mail
 					</div>
 				</div>
-				<input type="text" class="form-control" aria-labelledby="email-prepend">
+				<input type="text" class="form-control" aria-labelledby="email-prepend" data-db-path="imprint.email">
 				<div class="input-group-append">
-					<button class="btn btn-outline-input" tabindex="-1">
+					<button class="btn btn-outline-input button-upload" tabindex="-1">
 						<img src="/svg/cloud-upload-fill.svg">
 					</button>
 				</div>
@@ -109,9 +109,9 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 					USt-IdNr.
 					</div>
 				</div>
-				<input type="text" class="form-control" aria-labelledby="vat-id-prepend">
+				<input type="text" class="form-control" aria-labelledby="vat-id-prepend" data-db-path="imprint.vatId">
 				<div class="input-group-append">
-					<button class="btn btn-outline-input" tabindex="-1">
+					<button class="btn btn-outline-input button-upload" tabindex="-1">
 						<img src="/svg/cloud-upload-fill.svg">
 					</button>
 				</div>
@@ -132,9 +132,9 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 						Website-Titel
 					</div>
 				</div>
-				<input type="text" class="form-control" aria-labelledby="website-title-prepend">
+				<input type="text" class="form-control" aria-labelledby="website-title-prepend" disabled="disabled">
 				<div class="input-group-append">
-					<button class="btn btn-outline-input" tabindex="-1">
+					<button class="btn btn-outline-input button-upload" disabled="disabled" tabindex="-1">
 						<img src="/svg/cloud-upload-fill.svg">
 					</button>
 				</div>
@@ -155,5 +155,12 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 		</div>
 	</div>
 </div>
+<script src="js/uploadfield-bindings.js?v=<?php echo time();?>"></script><!-- TODO -->
+<script>
+	// Load data from server and display it in input fields.
+	$('.input-group-append .button-upload').each(function() {
+		fillInputField($(this), 1);
+	})
+</script>
 </body>
 </html>

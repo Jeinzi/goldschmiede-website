@@ -1,3 +1,46 @@
+/**************** METHODS ****************/
+
+// To be executed, if there are no projects to be listed.
+function noProjectsDetected()
+{
+	// Remove the project info section and hide the project lists.
+	$('#dataDisplay').remove();
+	$('#listGroupListed').hide();
+	$('#listGroupUnlisted').hide();
+
+	// Insert a notification.
+	$('#projectList').html('<div class="list-group"><li class="list-group-item"><h4>Keine Projekte vorhanden.</h4></li></div>');
+}
+
+// Gets a complete set of the banner data for a given banner id from the server
+// and updates all inputs and the view graph accordingly.
+function getAndUpdateData(bannerId)
+{
+	// Request banner information.
+	$.get('get-banner-data.php', {bannerId: bannerId}).done(function(data) {
+		data = JSON.parse(data);
+
+		// Update all the input fields and reset the state of their corresponding buttons.
+		resetInputButton($('#input-title').val(data.title));
+		resetInputButton($('#input-subtitle').val(data.subtitle));
+
+		$('#input-is-active').bootstrapToggle(data.active == 1 ? 'on' : 'off', true);
+	});
+}
+
+// Get the id of the currently active banner.
+function getActiveListElement() {
+	return $('a.list-group-item.list-group-item-primary');
+}
+
+function getActiveBannerId() {
+	return getActiveListElement().attr('data-id');
+}
+
+
+
+
+/******************* BINDINGS *******************/
 /**************** Switch project ****************/
 
 // Click on one of the projects in the project list.
@@ -16,55 +59,6 @@ $('a.list-group-item').click(function() {
 	getAndUpdateData(bannerId);
 });
 
-
-/**************** Update info in database ****************/
-
-// Click on one of the buttons attached to an input field, except the delete button.
-$('.input-group-append button').not('#button-delete').click(clickUpdateButton);
-
-function clickUpdateButton() {
-	// Return if the button has already been pressed and the input has not changed since.
-	var button = $(this);
-	if(button.hasClass('btn-success') || button.hasClass('btn-danger')) {
-		return;
-	}
-
-	var activeId = getActiveBannerId();
-	var input = button.parent().siblings("input, textarea");
-
-	var payloadString = '{"bannerId":"' + activeId + '","' + input.attr('id') + '":"' + input.val() + '"}';
-	var jsonObject = JSON.parse(payloadString);
-	//TODO alert(payloadString);
-
-	// Send an update request to the server with the current project's id and
-	// the data field to be updated along with the new data.
-	$.get('update-banner-data.php', jsonObject).done(function(data) {
-		// Adapt the button style according to the success of the request.
-		if(data == 1)	{
-			button.children().attr("src", "/svg/check-circle-fill-white.svg");
-			button.removeClass().addClass('btn btn-success');
-		}
-		else {
-			button.children().attr("src", "/svg/x-white.svg");
-			button.removeClass().addClass('btn btn-danger');
-		}
-	});
-}
-
-// Reset button state if something is entered into the corresponding input field.
-$('input, textarea').on('input', function() {
-	resetInputButton($(this));
-});
-
-// When pressing enter in an input field, execute the corresponding button's action.
-$('div.input-group input').keypress(function(e) {
-	// Exit, if the enter key hasn't been pressed.
-	if(e.which != 13) {
-		return;
-	}
-
-	clickUpdateButton.call($(this).siblings('.input-group-append').children());
-});
 
 
 /**************** Project deletion ****************/
@@ -129,6 +123,7 @@ function clickDeleteButton() {
 		}
 	});
 }
+
 
 
 /**************** Toggle listing ****************/
