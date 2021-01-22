@@ -79,11 +79,11 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 					<div class="col-12 col-lg-8 col-xl-7">
 						<div class="input-group mb-2">
 							<div class="input-group-prepend">
-								<div class="input-group-text">
+								<div id="gallery-title-prepend" class="input-group-text">
 									Titel
 								</div>
 							</div>
-							<input type="text" class="form-control" placeholder="" aria-label="Titel" data-db-path="galleryImages.title">
+							<input type="text" class="form-control" placeholder="" aria-labelledby="gallery-title-prepend" data-db-path="galleryImages.title">
 							<div class="input-group-append">
 								<button class="btn btn-outline-input button-upload" tabindex="-1">
 									<img src="/svg/cloud-upload-fill.svg">
@@ -93,11 +93,11 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 
 						<div class="input-group mb-2">
 							<div class="input-group-prepend">
-								<div class="input-group-text">
+								<div id="gallery-subtitle-prepend" class="input-group-text">
 									Untertitel
 								</div>
 							</div>
-							<textarea class="form-control" placeholder="" aria-label="Untertitel" data-db-path="galleryImages.subtitle"></textarea>
+							<textarea class="form-control" placeholder="" aria-labelledby="gallery-subtitle-prepend" data-db-path="galleryImages.subtitle"></textarea>
 							<div class="input-group-append">
 								<button class="btn btn-outline-input button-upload" tabindex="-1">
 									<img src="/svg/cloud-upload-fill.svg">
