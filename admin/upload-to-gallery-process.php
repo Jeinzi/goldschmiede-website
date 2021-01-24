@@ -24,14 +24,13 @@ if (file_exists($targetPath)) {
 }
 
 // Check if file name is empty.
-if ($_FILES["image"]["name"] === "") {
-    $error = "No file selected or file to large.";
+if ($_FILES["image"]["error"] === UPLOAD_ERR_NO_FILE) {
+    $error = "No file selected.";
 }
 
 // Check file size.
-$maxSize = 5000000;
-if ($_FILES["image"]["size"] > $maxSize) {
-    $error = "File is too large. (>" . $maxSize . "MB)";
+if($_FILES["image"]["error"] === UPLOAD_ERR_INI_SIZE) {
+    $error = "File is too large.";
 }
 
 // Upload file.
