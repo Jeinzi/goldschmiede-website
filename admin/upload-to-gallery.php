@@ -24,11 +24,11 @@ include("../head.php");
 		<div class="row">
 			<div class="col-12">
 				<h1 class="main-heading border-bottom">Galeriebilder hochladen</h1>
-				<form action="upload-to-gallery-process" method="POST">
+				<form action="upload-to-gallery-process" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						<div class="input-group mb-2">
 							<label for="fileSelection">Wähle ein Bild</label>
-    						<input type="file" class="form-control-file" id="fileSelection">
+    						<input type="file" name="image" class="form-control-file" id="fileSelection">
 						</div>
 
 						<div class="input-group mb-2">
@@ -37,7 +37,7 @@ include("../head.php");
 									Titel
 								</div>
 							</div>
-							<input type="text" class="form-control">
+							<input type="text" name="title" class="form-control">
 						</div>
 
 						<div class="input-group mb-2">
@@ -46,7 +46,7 @@ include("../head.php");
 									Untertitel
 								</div>
 							</div>
-							<textarea class="form-control"></textarea>
+							<textarea class="form-control" name="subtitle"></textarea>
 						</div>
 
 						<button type="submit" class="btn btn-success float-right">Hochladen</button>
