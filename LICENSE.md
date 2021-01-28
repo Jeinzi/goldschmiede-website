@@ -1,11 +1,23 @@
 # Licenses
-Everything in this repository is published under the terms of the MIT License.
+Everything in this repository, including Bootstrap, Bootstrap4-Toggle & jQuery, is published under the terms of the MIT License.
 The svg icons are taken from [Bootstrap](https://github.com/twbs/icons), with trash-fill-white.svg, check-circle-fill-white.svg and x-white.svg being slightly modified in their color.
 
-## MIT License
+## Authors
+### This Website
 Copyright (c) 2021 Julian Heinzel
-Copyright (c) 2019-2020 The Bootstrap Authors
 
+### Bootstrap
+Copyright (c) 2011-2021 Twitter, Inc.
+Copyright (c) 2011-2021 The Bootstrap Authors
+
+### Bootstrap4-Toggle
+Copyright (c) 2011-2014 Min Hur, The New York Times Company
+Copyright (c) 2018 Brent Ely
+
+### jQuery
+Copyright (c) OpenJS Foundation and other contributors, https://openjsf.org/
+
+## MIT License
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
