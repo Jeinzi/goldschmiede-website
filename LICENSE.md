@@ -1,12 +1,28 @@
 # Licenses
 This repository is available under the terms of the GNU Affero General Public License v3.0 or any later version of that license.
 
-The SVG icons included herein are taken from [Bootstrap](https://github.com/twbs/icons) and are available under the MIT license. trash-fill-white.svg, check-circle-fill-white.svg and x-white.svg have been slightly modified in their color.
+Bootstrap, Bootstrap4-Toggle & jQuery are available under the terms of the MIT License.
+
+The SVG icons included are also taken from [Bootstrap](https://github.com/twbs/icons), so MIT as well. trash-fill-white.svg, check-circle-fill-white.svg and x-white.svg have been slightly modified in their color.
+
+
+## Authors
+### This Website
+Copyright (c) 2021 Julian Heinzel
+
+### Bootstrap
+Copyright (c) 2011-2021 Twitter, Inc.
+Copyright (c) 2011-2021 The Bootstrap Authors
+
+### Bootstrap4-Toggle
+Copyright (c) 2011-2014 Min Hur, The New York Times Company
+Copyright (c) 2018 Brent Ely
+
+### jQuery
+Copyright (c) OpenJS Foundation and other contributors, https://openjsf.org
 
 
 ## MIT License
-Copyright (c) 2019-2021 The Bootstrap Authors
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
