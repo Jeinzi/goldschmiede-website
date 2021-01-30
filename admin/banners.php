@@ -21,6 +21,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 	include("php/navbar.php");
 
 	function outputListGroupItems() {
+		$bannerFileName = "";
 		$connection = connectDb();
 
 		$query = $connection->prepare("SELECT * FROM banners ORDER BY active DESC");
@@ -35,6 +36,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 			$additionalClasses = "";
 			if ($first) {
 				$additionalClasses = " list-group-item-primary";
+				$bannerFileName = $row["fileName"];
 				$first = false;
 			}
 			else if (!$row["active"]) {
@@ -44,6 +46,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 					. $row["fileName"]
 					. "</a>";
 		}
+		return $bannerFileName;
 	}
 ?>
 	<div class="container-fluid mt-4">
@@ -59,7 +62,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
   						</div>
 					</li>
 					<?php
-						outputListGroupItems();
+						$bannerFileName = outputListGroupItems();
 					?>
 				</ul>
 			</div>
@@ -68,8 +71,8 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 					<!-- Preview -->
 					<div class="col-lg-8 col-xl-7">
 						<div class="d-flex justify-content-center mb-3">
-							<!-- TODO: Add titel and subtitle preview -->
-							<img id="banner-preview" src="/img/banner/1.jpg" class="d-block w-100 img-thumbnail">
+							<!-- TODO: Add title and subtitle preview -->
+							<img id="banner-preview" src="/img/banner/<?php echo $bannerFileName;?>" class="d-block w-100 img-thumbnail">
 						</div>
 					</div>
 				</div>
@@ -117,44 +120,28 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 			</div>
 		</div>
 	</div>
-<script src="js/uploadfield-bindings.js?v=<?php echo time();?>"></script><!-- TODO -->
+<script src="js/uploadfield.js?v=<?php echo time();?>"></script><!-- TODO -->
+<script src="js/list.js?v=<?php echo time();?>"></script><!-- TODO -->
 <script src="js/banner.js?v=<?php echo time();?>"></script><!-- TODO -->
 <script>
-	// Hide empty lists and choose the first project
-	// in the first visible list to be active.
-	// TODO does nothing currently
-	var areBannersListed = true;
-	var buttonsListed = $('#listGroupListed').children('button').length;
-	var buttonsUnlisted = $('#listGroupUnlisted').children('button').length;
+fillInputFields();
 
-	if(buttonsListed != "")
-	{
-		$('#listGroupListed').children('button.list-group-item').first().addClass('active');
-		if(buttonsUnlisted == "") {
-			$('#listGroupUnlisted').hide();
-		}
-	}
-	else if(buttonsListed == "" && buttonsUnlisted != "")
-	{
-		$('#listGroupUnlisted').children('button.list-group-item').first().addClass('active');
-		$('#listGroupListed').hide();
-	}
-	else if(buttonsListed == "" && buttonsUnlisted == "")
-	{
-		noProjectsDetected();
-		//areBannersListed = false;
-	}
+function getUploadId() {
+	return getActiveListItemId();
+}
 
+function onListItemChange(item) {
+	$("#banner-preview").attr("src", "/img/banner/" + item.text());
+	fillInputFields();
+	resetUploadButtons();
+	// TODO: Preserve gray background for inactive banners when switching.
 
-	// If there are banners listed, get the active one's id
-	// and fill in the banner info.
-	// Load data from server and display it in input fields.
-	if(areBannersListed) {
-		var bannerId = $('a.list-group-item.list-group-item-primary').text();
-		$('.input-group-append .button-upload').each(function() {
-			fillInputField($(this), bannerId);
-		})
-	}
+	var jsonObject = {path: "banners.active", id: getActiveListItemId()};
+	$.get('get-data.php', jsonObject).done(function(data) {
+		data = JSON.parse(data);
+		$('#input-is-active').bootstrapToggle(data.value == 1 ? 'on' : 'off', true);
+	});
+}
 </script>
 </body>
 </html>

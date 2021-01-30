@@ -31,7 +31,12 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 
 		$first = true;
 		while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-			echo "<a href='#' onclick='return false;' class='list-group-item list-group-item-action' data-id='" . $row["id"] . "'>"
+			$additionalClasses = "";
+			if ($first) {
+				$additionalClasses = " list-group-item-primary";
+				$first = false;
+			}
+			echo "<a href='#' onclick='return false;' class='list-group-item list-group-item-action$additionalClasses' data-id='" . $row["id"] . "'>"
 					. $row["fileName"]
 					. "</a>";
 		}
@@ -59,8 +64,8 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 					<!-- Preview -->
 					<div class="col-lg-8 col-xl-7">
 						<div class="d-flex justify-content-center mb-3">
-							<!-- TODO: Add titel and subtitle preview -->
-							<img src="/img/Emailstecker.jpg" class="d-block w-50 img-thumbnail" alt="...">
+							<!-- TODO: Add title and subtitle preview -->
+							<img id="preview" src="/img/Emailstecker.jpg" class="d-block w-50 img-thumbnail" alt="...">
 						</div>
 					</div>
 
@@ -109,11 +114,21 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 			</div>
 		</div>
 	</div>
-<script src="js/uploadfield-bindings.js?v=<?php echo time();?>"></script><!-- TODO -->
+<script src="js/uploadfield.js?v=<?php echo time();?>"></script><!-- TODO -->
+<script src="js/list.js?v=<?php echo time();?>"></script><!-- TODO -->
 <script>
-$('.input-group-append .button-upload').each(function() {
-	fillInputField($(this), 1);
-})
+fillInputFields();
+
+function getUploadId() {
+	return getActiveListItemId();
+}
+
+function onListItemChange(item) {
+	$("#preview").attr("src", "/img/" + item.text());
+	fillInputFields();
+	resetUploadButtons();
+	// TODO: Update Tags
+}
 </script>
 </body>
 </html>
