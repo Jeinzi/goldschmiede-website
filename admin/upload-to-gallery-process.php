@@ -13,14 +13,9 @@ $targetPath = "../img/" . basename($_FILES["image"]["name"]);
 //echo $targetPath;
 //var_dump($_FILES);
 
-// Check if uploaded file is an image.
-if (getimagesize($_FILES["image"]["tmp_name"]) === false) {
-    $error = "File is not an image";
-}
-
-// Check if file exists.
-if (file_exists($targetPath)) {
-    $error = "File already exists.";
+// Check file size.
+if ($_FILES["image"]["error"] === UPLOAD_ERR_INI_SIZE) {
+    $error = "File is too large.";
 }
 
 // Check if file name is empty.
@@ -28,9 +23,28 @@ if ($_FILES["image"]["error"] === UPLOAD_ERR_NO_FILE) {
     $error = "No file selected.";
 }
 
-// Check file size.
-if($_FILES["image"]["error"] === UPLOAD_ERR_INI_SIZE) {
-    $error = "File is too large.";
+// Check if uploaded file is an image.
+if ($error === "") {
+    $imageInfo = getimagesize($_FILES["image"]["tmp_name"]);
+    if ($imageInfo === false) {
+        $error = "File is not an image";
+    }
+}
+
+// Check if file exists.
+if ($error === "") {
+    if (file_exists($targetPath)) {
+        $error = "File already exists.";
+    }
+}
+
+// Make sure aspect ratio is 1:1.
+if ($error === "") {
+    $w = $imageInfo[0];
+    $h = $imageInfo[1];
+    if ($w / $h != 1) {
+        $error = "Aspect ratio not 1:1 but " . ($w / $h);
+    }
 }
 
 // Upload file.
@@ -51,8 +65,11 @@ if ($error === "") {
     }
 }
 
-echo $error;
+
 if ($error === "") {
     header('Location: gallery');
+}
+else {
+    header('Location: upload-to-gallery?error=' . $error);
 }
 ?>
