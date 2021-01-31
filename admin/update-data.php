@@ -31,6 +31,7 @@ $permittedCols = [
         "vatId"
     ],
     "banners" => [
+        "active",
         "title",
         "subtitle"
     ],

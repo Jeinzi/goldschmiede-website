@@ -39,8 +39,8 @@ function clickDeleteButton() {
 $('#input-is-active').change(function(e, context) {
 	// Change the database entry.
 	var bannerId = getActiveListItemId();
-	var jsonObject = {"bannerId": bannerId, "input-is-active": $(this).prop('checked') == true ? 1 : 0};
-	$.get('update-banner-data.php', jsonObject).done(function(data) {
+	var jsonObject = {"path": "banners.active", "id": bannerId, "value": $(this).prop('checked') == true ? 1 : 0};
+	$.get('update-data.php', jsonObject).done(function(data) {
 		if (data == 1) {
 			// TODO: Feedback
 		}
