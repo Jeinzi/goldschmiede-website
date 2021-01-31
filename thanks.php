@@ -10,7 +10,6 @@
 </head>
 <body>
 <?php
-	include("utility.php");
 	include("navbar.php");
 	$success = $_GET['success'];
 ?>
