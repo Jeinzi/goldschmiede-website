@@ -13,6 +13,7 @@ if(!isset($_SESSION['goldsmithLoggedIn']))
 	<title>Backend</title>
 <?php
 include("../head.php");
+include("../php/utility.php")
 //include("../php/general.php"); TODO
 ?>
 </head>
@@ -54,6 +55,11 @@ include("../head.php");
 				</form>
 			</div>
 		</div>
+		<?php
+			if (isset($_GET["error"]) && $_GET["error"] !== "") {
+				alert("Error: " . $_GET["error"]);
+			}
+		?>
 	</div>
 </body>
 </html>
