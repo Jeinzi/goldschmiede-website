@@ -20,6 +20,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 	include("php/navbar.php");
 
 	function outputListGroupItems() {
+		$firstFileName = "";
 		$connection = connectDb();
 
 		$query = $connection->prepare("SELECT * FROM galleryImages");
@@ -34,12 +35,14 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 			$additionalClasses = "";
 			if ($first) {
 				$additionalClasses = " list-group-item-primary";
+				$firstFileName = $row["fileName"];
 				$first = false;
 			}
 			echo "<a href='#' onclick='return false;' class='list-group-item list-group-item-action$additionalClasses' data-id='" . $row["id"] . "'>"
 					. $row["fileName"]
 					. "</a>";
 		}
+		return $firstFileName;
 	}
 ?>
 	<div class="container-fluid mt-4">
@@ -55,7 +58,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
   						</div>
 					</li>
 					<?php
-						outputListGroupItems();
+						$firstFileName = outputListGroupItems();
 					?>
 				</ul>
 			</div>
@@ -65,7 +68,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 					<div class="col-lg-8 col-xl-7">
 						<div class="d-flex justify-content-center mb-3">
 							<!-- TODO: Add title and subtitle preview -->
-							<img id="preview" src="/img/Emailstecker.jpg" class="d-block w-50 img-thumbnail" alt="...">
+							<img id="preview" src="/img/<?php echo $firstFileName; ?>" class="d-block w-50 img-thumbnail" alt="...">
 						</div>
 					</div>
 
