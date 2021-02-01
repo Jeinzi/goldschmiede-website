@@ -7,7 +7,7 @@
 		$websiteTitle = getWebsiteTitle();
 	?>
 	<title><?= $websiteTitle ?> - Galerie </title>
-	<script src="/gallery.js" defer></script>
+	<script src="/res/gallery.js" defer></script>
 	<link rel="stylesheet" href="res/gallery.css">
 
 </head>
