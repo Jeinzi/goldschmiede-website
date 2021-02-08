@@ -28,25 +28,20 @@
 	<div class="row">
 		<div class="col">
 			<?= $row["name"] ?><br>
-			(evt.: geschäftliche Bezeichnung)<br>
 			<?= $row["street"] ?><br>
 			<?= $row["city"] ?><br>
 		</div>
 	</div>
 	<br>
 	<div class="row">
-		<div class="col-1">
-			<b>Telefon:</b><br>
-			<b>E-Mail:</b>
-		</div>
-		<div class="col" style="padding-left:40px">
-            <?= $row["phone"] ?><br>
-			<a href="mailto:<?= $row["email"] ?>"><?= $row["email"] ?></a><br>
+		<div class="col">
+			Telefon: <?= $row["phone"] ?><br>
+			E-Mail: <a href="mailto:<?= $row["email"] ?>"><?= $row["email"] ?></a><br>
 		</div>
 	</div>
-
-	<br>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: <?= $row["vatId"] ?><br>
-	<br>Verantwortlicher i.S.d. § 55 Abs. 2 RStV: <?= $row["name"] ?>, <?= $row["street"] ?>, <?= $row["city"] ?><br>
+	<br>
+	Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: <?= $row["vatId"] ?><br>
+	Verantwortlicher i.S.d. § 55 Abs. 2 RStV: <?= $row["name"] ?>, <?= $row["street"] ?>, <?= $row["city"] ?><br>
 </div>
 </body>
 </html>
