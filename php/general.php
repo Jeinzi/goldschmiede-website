@@ -18,7 +18,9 @@ function connectDb() {
 	}
 
     try {
-		$db = new PDO('mysql:host=localhost;dbname=freya', $user, $password);
+		// The last parameter tells PDO to return the number of matched rows,
+		// even if they where not affected by an update because its value wasn't changed.
+		$db = new PDO('mysql:host=localhost;dbname=freya', $user, $password, array(PDO::MYSQL_ATTR_FOUND_ROWS => true));
 		$db->exec("SET NAMES 'utf8';");
     }
     catch (PDOException $e) {

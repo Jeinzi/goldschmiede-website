@@ -157,6 +157,9 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 </div>
 <script src="js/uploadfield.js?v=<?php echo time();?>"></script><!-- TODO -->
 <script>
+	function getUploadId() {
+		return 1;
+	}
 	// Load data from server and display it in input fields.
 	$('.input-group-append .button-upload').each(function() {
 		fillInputField($(this), 1);
