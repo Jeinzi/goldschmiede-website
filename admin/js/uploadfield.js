@@ -50,7 +50,7 @@ function uploadFieldData(button, id) {
 	}
 
 	var input = button.parent().siblings("input, textarea");
-	var payloadString = `{"id":"${id}","path":"${input.attr('data-db-path')}","value":"${input.val()}"}`;
+	var payloadString = `{"id":"${id}","path":"${input.attr('data-db-path')}","value":"${input.val().trim()}"}`;
 	var jsonObject = JSON.parse(payloadString);
 
     // Send an update request to the server with the data field to be updated
