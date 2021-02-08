@@ -57,7 +57,12 @@ if (array_key_exists($table, $permittedCols) &&
     $query = $connection->prepare("UPDATE " . $table . " SET " . $column . "=? WHERE id=?");
     $result = $query->execute(array($value, $id));
     if ($result == true) {
-    	echo 1;
+        if ($query->rowCount() > 0) {
+            echo 1;
+        }
+        else {
+            echo 0;
+        }
     	exit;
     }
 }
