@@ -18,7 +18,7 @@
 		</div>
 	</div>
 
-	<form method="POST" action="save-message">
+	<form method="POST" action="save-message" style="margin-bottom: 5%;">
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="input-group mb-3">
