@@ -22,7 +22,6 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="imprint">Impressum</a>
           <a class="dropdown-item" href="privacy">Datenschutz</a>
-          <a class="dropdown-item" href="agb">AGB</a>
         </div>
       </li>
     </ul>
