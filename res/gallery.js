@@ -1,7 +1,14 @@
+function resizeImageContainer() {
+    $('.square-container').css('width', 'auto');
+    $('.square-container').css('width', $("#gallery-image").width()+'px');
+}
+
+$(window).resize(resizeImageContainer);
+
 window.onload = function() {
     $("#gallery-image").on('load', function() {
         $(".gallery-viewer-container").show();
-        $('.square-container').css('width', $("#gallery-image").width()+'px');
+        resizeImageContainer();
     });
 }
 
@@ -15,5 +22,4 @@ $('.gallery-thumbnail').click(function() {
 
 $('.gallery-viewer-container').click(function() {
     $(".gallery-viewer-container").hide();
-    $('.square-container').css('width', 'auto');
 })
