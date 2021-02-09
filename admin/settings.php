@@ -19,14 +19,14 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 <?php
 	include("include/navbar.php");
 ?>
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
 		<div class="col-12">
 			<h1 class="main-heading border-bottom">Einstellungen</h1>
 			<h2>Impressum</h2>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row" style="margin-bottom: 2%;">
 		<div class="col-lg-6">
 			<div class="input-group mb-2">
 				<div class="input-group-prepend">
@@ -124,7 +124,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 			<h2>Allgemein</h2>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row" style="margin-bottom: 2%;">
 		<div class="col-lg-6">
 			<div class="input-group mb-2">
 				<div class="input-group-prepend">
