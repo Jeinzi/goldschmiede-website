@@ -122,10 +122,11 @@ function outputTags() {
 	var container = $("#tag-container");
 	container.children("a").remove();
 	$.get("get-tags", {id: getActiveListItemId()}, function(data) {
+		console.log(data);
 		data = JSON.parse(data);
 		console.log(data);
 		data.forEach(function(item, i) {
-			container.append(`<a href='#' class='badge badge-warning'>${item}</a> `);
+			container.append(`<a href="#" class="badge" style="background-color: #${item.color}; color: #${item.textColor}">${item.name}</a> `);
 		})
 	});
 }
