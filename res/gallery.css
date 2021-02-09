@@ -9,6 +9,18 @@
 		width: 100px;
 		margin: 5px;
 	}
+
+	#gallery-title {
+		margin-bottom: 0.1rem;
+		font-size: medium;
+	}
+
+	#gallery-subtitle {
+		margin-bottom: 0.5rem;
+		margin-left: 2px;
+		margin-right: 2px;
+		font-size: x-small;
+	}
 }
 
 .gallery-viewer-container {
