@@ -57,7 +57,7 @@ if ($error === "" &&
 // Update database.
 if ($error === "") {
     $connection = connectdB();
-    $query = $connection->prepare("INSERT INTO galleryImages(fileName, title, subtitle) VALUES (?, ?, ?)");
+    $query = $connection->prepare("INSERT INTO galleryImages(fileName, title, subtitle, uploadDate) VALUES (?, ?, ?, current_timestamp())");
     $result = $query->execute(array(basename($targetPath), $_POST['title'], $_POST['subtitle']));
     if ($result === false) {
         $error = "Could not update database.";
