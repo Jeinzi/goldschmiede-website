@@ -12,7 +12,7 @@ if (isset($_SESSION['goldsmithLoggedIn'])) {
 <?php
 include("../include/head.php");
 ?>
-	<link rel="stylesheet" href="css/backend.css">
+	<link rel="stylesheet" href="res/backend.css">
 </head>
 
 <body>
@@ -48,6 +48,6 @@ include("../include/head.php");
 			</div>
 		</div>
 	</div>
-	<script src="js/login.js" defer></script>
+	<script src="res/login.js" defer></script>
 </body>
 </html>

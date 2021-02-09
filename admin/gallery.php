@@ -117,8 +117,8 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 			</div>
 		</div>
 	</div>
-<script src="js/uploadfield.js"></script>
-<script src="js/list.js"></script>
+<script src="res/uploadfield.js"></script>
+<script src="res/list.js"></script>
 <script>
 fillInputFields();
 
