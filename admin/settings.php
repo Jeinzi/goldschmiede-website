@@ -155,7 +155,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 		</div>
 	</div>
 </div>
-<script src="js/uploadfield.js"></script>
+<script src="res/uploadfield.js"></script>
 <script>
 	function getUploadId() {
 		return 1;
