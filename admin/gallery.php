@@ -68,7 +68,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 					<div class="col-lg-8 col-xl-7">
 						<div class="d-flex justify-content-center mb-3">
 							<!-- TODO: Add title and subtitle preview -->
-							<img id="preview" src="/img/<?php echo $firstFileName; ?>" class="d-block w-50 img-thumbnail" alt="...">
+							<img id="preview" src="/img/<?php echo $firstFileName; ?>" class="d-block w-50 img-thumbnail" alt="Das aktuell gewählte Bild">
 						</div>
 					</div>
 
