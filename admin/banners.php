@@ -71,7 +71,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 					<div class="col-lg-8 col-xl-7">
 						<div class="d-flex justify-content-center mb-3">
 							<!-- TODO: Add title and subtitle preview -->
-							<img id="banner-preview" src="/img/banner/<?php echo $bannerFileName;?>" class="d-block w-100 img-thumbnail">
+							<img id="banner-preview" src="/img/banner/<?php echo $bannerFileName;?>" class="d-block w-100 img-thumbnail" alt="Der aktuell gewählte Banner">
 						</div>
 					</div>
 				</div>
