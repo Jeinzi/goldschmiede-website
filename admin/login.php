@@ -20,6 +20,7 @@ include("../head.php");
 </head>
 
 <body>
+	<a class="dropdown-item" href="/about-javascript" style="display: none;" data-jslicense="1">Javascript-Lizenzen</a>
 	<div class="container-login d-flex" style="flex-direction: column">
 		<div id="container-card">
 			<div class="card text-center card-login">

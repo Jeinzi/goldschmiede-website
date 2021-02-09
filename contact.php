@@ -49,7 +49,7 @@
 	</div>
 	<div class="row">
 		<div class="col-12">
-			<button type="submit" class="btn btn-success float-right">Schicks mir!</button>
+			<button type="submit" class="btn btn-success float-right">Absenden!</button>
 		</div>
 	</div>
 	</form>
