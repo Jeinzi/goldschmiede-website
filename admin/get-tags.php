@@ -15,7 +15,7 @@ if (!isset($_GET['id'])) {
 // The id of the image to be queried.
 $id = $_GET['id'];
 $connection = connectdB();
-$query = $connection->prepare("select name from freya.galleryTags,freya.tags WHERE galleryTags.imgId=? AND galleryTags.tagId = tags.id;");
+$query = $connection->prepare("select name,color,textColor from freya.galleryTags,freya.tags WHERE galleryTags.imgId=? AND galleryTags.tagId = tags.id;");
 $result = $query->execute(array($id));
 if ($result == false) {
 	exit;
@@ -31,7 +31,7 @@ foreach ($rows as $row) {
     else {
         $jsonData .= ',';
     }
-    $jsonData .= '"' . $row["name"] . '"';
+    $jsonData .= '{"name": "' . $row["name"] . '", "color": "' . $row["color"] . '", "textColor": "' . $row["textColor"] . '"}';
 }
 $jsonData .= ']';
 
