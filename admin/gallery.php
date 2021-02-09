@@ -73,13 +73,8 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 					</div>
 
 					<!-- Tags -->
-					<div class="col-lg-4 col-xl-2 mb-2">
+					<div id="tag-container" class="col-lg-4 col-xl-2 mb-2">
 						<h3 class="border-bottom pb-1 d-none d-lg-block">Tags</h3>
-						<a href="#" class="badge badge-primary">Emaille</a>
-						<a href="#" class="badge badge-secondary">Silber</a>
-						<a href="#" class="badge badge-success">Bubble-Kollektion</a>
-						<a href="#" class="badge badge-warning">Verkauft</a>
-						<a href="#" class="badge badge-info">Ohrstecker</a>
 					</div>
 				</div>
 				<div class="row">
@@ -121,6 +116,19 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 <script src="res/list.js"></script>
 <script>
 fillInputFields();
+outputTags();
+
+function outputTags() {
+	var container = $("#tag-container");
+	container.children("a").remove();
+	$.get("get-tags", {id: getActiveListItemId()}, function(data) {
+		data = JSON.parse(data);
+		console.log(data);
+		data.forEach(function(item, i) {
+			container.append(`<a href='#' class='badge badge-warning'>${item}</a> `);
+		})
+	});
+}
 
 function getUploadId() {
 	return getActiveListItemId();
@@ -130,7 +138,7 @@ function onListItemChange(item) {
 	$("#preview").attr("src", "/img/" + item.text());
 	fillInputFields();
 	resetUploadButtons();
-	// TODO: Update Tags
+	outputTags();
 }
 </script>
 </body>
