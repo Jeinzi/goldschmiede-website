@@ -51,24 +51,24 @@
                     <td><a href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.js">bootstrap4-toggle.js</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/admin/js/banner.js">banner.js</a></td>
+                    <td><a href="/admin/res/banner.js">banner.js</a></td>
                     <td><a href="http://www.jclark.com/xml/copying.txt">MIT</a></td>
-                    <td><a href="/admin/js/banner.js">banner.js</a></td>
+                    <td><a href="/admin/res/banner.js">banner.js</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/admin/js/list.js">list.js</a></td>
+                    <td><a href="/admin/res/list.js">list.js</a></td>
                     <td><a href="http://www.jclark.com/xml/copying.txt">MIT</a></td>
-                    <td><a href="/admin/js/list.js">list.js</a></td>
+                    <td><a href="/admin/res/list.js">list.js</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/admin/js/login.js">login.js</a></td>
+                    <td><a href="/admin/res/login.js">login.js</a></td>
                     <td><a href="http://www.jclark.com/xml/copying.txt">MIT</a></td>
-                    <td><a href="/admin/js/login.js">login.js</a></td>
+                    <td><a href="/admin/res/login.js">login.js</a></td>
                 </tr>
                 <tr>
-                    <td><a href="/admin/js/uploadfield.js">uploadfield.js</a></td>
+                    <td><a href="/admin/res/uploadfield.js">uploadfield.js</a></td>
                     <td><a href="http://www.jclark.com/xml/copying.txt">MIT</a></td>
-                    <td><a href="/admin/js/uploadfield.js">uploadfield.js</a></td>
+                    <td><a href="/admin/res/uploadfield.js">uploadfield.js</a></td>
                 </tr>
             </table>
         </div>
