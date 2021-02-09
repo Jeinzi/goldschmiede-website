@@ -10,6 +10,7 @@
 			<li class="nav-item"><a class="nav-link" href="upload-to-gallery">Bilder hochladen</a></li>
 			<li class="nav-item"><a class="nav-link" href="banners">Banner</a></li>
 			<li class="nav-item"><a class="nav-link" href="settings">Einstellungen</a></li>
+			<li class="nav-item" style="display: none;"><a class="nav-link" href="/about-javascript" data-jslicense="1">Javascript-Lizenzen</a></li>
 		</ul>
 		<ul class="navbar-nav">
 			<li class="nav-item">

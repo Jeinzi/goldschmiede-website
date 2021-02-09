@@ -9,7 +9,6 @@
 	<title><?= $websiteTitle ?> - Galerie </title>
 	<script src="/res/gallery.js" defer></script>
 	<link rel="stylesheet" href="res/gallery.css">
-
 </head>
 <body>
 <?php
