@@ -5,7 +5,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 	header('Location: .');
 	exit;
 }
-include("../php/utility.php");
+include("../include/utility.php");
 
 
 $error = "";

@@ -11,13 +11,13 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 <head>
 	<title>Backend</title>
 <?php
-	include("../php/head.php");
-	include("../php/utility.php");
+	include("../include/head.php");
+	include("../include/utility.php");
 ?>
 </head>
 <body>
 <?php
-	include("php/navbar.php");
+	include("include/navbar.php");
 
 	function outputListGroupItems() {
 		$firstFileName = "";

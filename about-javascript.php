@@ -2,8 +2,8 @@
 <html>
 <head>
 	<?php
-		include("php/head.php");
-		include("php/utility.php");
+		include("include/head.php");
+		include("include/utility.php");
 		$websiteTitle = getWebsiteTitle();
 	?>
 	<title><?= $websiteTitle ?> - Javascript-Lizenzen</title>
@@ -20,7 +20,7 @@
 </head>
 <body>
 <?php
-	include("php/navbar.php");
+	include("include/navbar.php");
 ?>
 <div class="container">
 

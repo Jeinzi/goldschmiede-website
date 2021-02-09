@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../php/utility.php");
+include("../include/utility.php");
 if (!isset($_POST['username']) || !isset($_POST['password']) || !isset($_POST['checkCredentialsOnly'])) {
 	exit;
 }

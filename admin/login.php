@@ -10,7 +10,7 @@ if (isset($_SESSION['goldsmithLoggedIn'])) {
 <head>
 	<title>Backend</title>
 <?php
-include("../php/head.php");
+include("../include/head.php");
 ?>
 	<link rel="stylesheet" href="css/backend.css?v=<?php echo time();?>"/> <!-- TODO: Remove time? -->
 </head>
