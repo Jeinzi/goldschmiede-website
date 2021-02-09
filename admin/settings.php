@@ -10,14 +10,14 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 <html>
 <head>
 	<?php
-		include("../php/head.php");
-		include("../php/utility.php");
+		include("../include/head.php");
+		include("../include/utility.php");
 	?>
 	<title>Backend - Einstellungen</title>
 </head>
 <body>
 <?php
-	include("php/navbar.php");
+	include("include/navbar.php");
 ?>
 <div class="container-fluid">
 	<div class="row">

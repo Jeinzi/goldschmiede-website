@@ -7,7 +7,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 }
 
 
-include("../php/utility.php");
+include("../include/utility.php");
 if (!isset($_GET['bannerId'])) {
 	echo 0;
 	exit;

@@ -17,7 +17,7 @@ function connectDb() {
 	try {
 		$handle = fopen($fileName, "r");
 		if (!$handle) {
-			throw new Error("Can't open password file.");
+			throw new Error("Can't open password file: '" . $fileName . "'");
 		}
 		$user = fgets($handle);
 		$password = fgets($handle);

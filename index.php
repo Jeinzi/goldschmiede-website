@@ -2,15 +2,15 @@
 <html>
 <head>
 	<?php
-		include("php/head.php");
-		include("php/utility.php");
+		include("include/head.php");
+		include("include/utility.php");
 		$websiteTitle = getWebsiteTitle();
 	?>
 	<title><?= $websiteTitle ?> </title>
 </head>
 <body>
 <?php
-	include("php/navbar.php");
+	include("include/navbar.php");
 
 	// Generate the html code for the banner carousel.
 	function generateCarousel() {
