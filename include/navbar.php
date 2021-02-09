@@ -22,7 +22,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="imprint">Impressum</a>
           <a class="dropdown-item" href="privacy">Datenschutz</a>
-          <a class="dropdown-item" href="/about-javascript" style="display: none;" data-jslicense="1">Javascript-Lizenzen</a>
+          <a class="dropdown-item" href="/javascript-licenses" style="display: none;" data-jslicense="1">Javascript-Lizenzen</a>
         </div>
       </li>
     </ul>
