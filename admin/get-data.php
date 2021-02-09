@@ -6,7 +6,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 	exit;
 }
 
-include("../php/general.php");
+include("../php/utility.php");
 
 
 if (!isset($_GET['path']) || !isset($_GET['id'])) {

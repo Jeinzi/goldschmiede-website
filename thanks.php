@@ -2,15 +2,15 @@
 <html>
 <head>
 	<?php
-		include("head.php");
-		include("php/general.php");
+		include("php/head.php");
+		include("php/utility.php");
 		$websiteTitle = getWebsiteTitle();
 	?>
 	<title><?= $websiteTitle ?> - Nachricht gesendet </title>
 </head>
 <body>
 <?php
-	include("navbar.php");
+	include("php/navbar.php");
 	$success = $_GET['success'];
 ?>
 

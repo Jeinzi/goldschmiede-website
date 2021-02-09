@@ -2,14 +2,14 @@
 <html>
 <head>
 	<?php
-		include("head.php");
-		include("php/general.php");
+		include("php/head.php");
+		include("php/utility.php");
 		$websiteTitle = getWebsiteTitle();
 	?>
 	<title><?= $websiteTitle ?> - AGB </title>
 </head>
 <body>
-<?php include("navbar.php") ?>
+<?php include("php/navbar.php") ?>
 <div class="container">
 	<div class="row">
 		<div class="col-12">

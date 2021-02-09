@@ -2,8 +2,8 @@
 <html>
 <head>
 	<?php
-		include("head.php");
-		include("php/general.php");
+		include("php/head.php");
+		include("php/utility.php");
 		$websiteTitle = getWebsiteTitle();
 	?>
 	<title><?= $websiteTitle ?> - Galerie </title>
@@ -11,10 +11,7 @@
 	<link rel="stylesheet" href="res/gallery.css">
 </head>
 <body>
-<?php
-	include("php/utility.php");
-	include("navbar.php");
-?>
+<?php include("php/navbar.php"); ?>
 
 <div class="gallery-viewer-container" style="display: none;">
 	<div class="margin-container">

@@ -12,15 +12,13 @@ if(!isset($_SESSION['goldsmithLoggedIn']))
 <head>
 	<title>Backend</title>
 <?php
-include("../head.php");
+include("../php/head.php");
 include("../php/utility.php")
-//include("../php/general.php"); TODO
 ?>
 </head>
 <body>
-<?php
-	include("php/navbar.php");
-?>
+<?php include("php/navbar.php"); ?>
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12">
