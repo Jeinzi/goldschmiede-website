@@ -6,13 +6,13 @@ if (isset($_SESSION['goldsmithLoggedIn'])) {
 ?>
 
 <!doctype html>
-<html>
+<html lang="de">
 <head>
 	<title>Backend</title>
 <?php
 include("../include/head.php");
 ?>
-	<link rel="stylesheet" href="css/backend.css?v=<?php echo time();?>"/> <!-- TODO: Remove time? -->
+	<link rel="stylesheet" href="css/backend.css">
 </head>
 
 <body>
@@ -27,7 +27,7 @@ include("../include/head.php");
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
-								<img src="/svg/person-fill.svg">
+								<img src="/svg/person-fill.svg" alt="Person">
 							</div>
 						</div>
 						<input type="text" name="input-username" class="form-control" id="input-username" placeholder="Identification">
@@ -35,7 +35,7 @@ include("../include/head.php");
 					<div class="input-group mb-4">
 	  					<div class="input-group-prepend">
 							<div class="input-group-text">
-								<img src="/svg/key-fill.svg">
+								<img src="/svg/key-fill.svg" alt="Schlüssel">
 							</div>
 						</div>
 						<input type="password" name="input-password" class="form-control" id="input-password" placeholder="Authorization code">
@@ -44,10 +44,10 @@ include("../include/head.php");
 				</div>
 			</div>
 			<div id="fail-div">
-				<img src="/svg/x-white.svg" class="d-none" width="32px">
+				<img src="/svg/x-white.svg" class="d-none" width="32" alt="Kreuz">
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="js/login.js" defer></script>
+	<script src="js/login.js" defer></script>
 </body>
 </html>

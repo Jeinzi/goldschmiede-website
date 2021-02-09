@@ -9,7 +9,8 @@ function resetUploadButtons() {
 
 function resetUploadButton(uploadButton) {
 	uploadButton.removeClass().addClass('btn btn-outline-input button-upload')
-	            .children().attr("src", "/svg/cloud-upload-fill.svg");
+				.children().attr("src", "/svg/cloud-upload-fill.svg")
+						   .attr("alt", "Hochladen-Symbol");
 }
 
 // Get data from the server and fill it in the text field.
@@ -58,11 +59,11 @@ function uploadFieldData(button, id) {
 	$.get('update-data.php', jsonObject).done(function(data) {
 		// Adapt the button style according to the success of the request.
 		if(data == 1) {
-			button.children().attr("src", "/svg/check-circle-fill-white.svg");
+			button.children().attr("src", "/svg/check-circle-fill-white.svg").attr("alt", "Erfolgreich-Symbol");
 			button.removeClass().addClass('btn btn-success button-upload');
 		}
 		else {
-			button.children().attr("src", "/svg/x-white.svg");
+			button.children().attr("src", "/svg/x-white.svg").attr("alt", "Fehler-Symbol");
 			button.removeClass().addClass('btn btn-danger button-upload');
 		}
 	});

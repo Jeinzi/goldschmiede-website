@@ -7,7 +7,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 }
 ?>
 <!doctype html>
-<html>
+<html lang="de">
 <head>
 	<title>Backend</title>
 	<?php
@@ -27,8 +27,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 		$query = $connection->prepare("SELECT * FROM banners ORDER BY active DESC");
 		$result = $query->execute();
 		if ($result == false) {
-			//TODO Error("Failed to query admins.");
-			echo "Could not get banners.";
+			alert("Could not get banners.");
 		}
 
 		$first = true;
@@ -52,19 +51,19 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 	<div class="container-fluid mt-4">
 		<div class="row">
 			<div class="col-md-4 col-lg-3 mb-3">
-				<ul class="list-group" style="overflow-y:auto;max-height:700px;">
-					<li class="list-group-item">
+				<div class="list-group" style="overflow-y:auto;max-height:700px;">
+					<div class="list-group-item">
   						<div class="d-flex w-100 justify-content-between">
   							<h4 class="mb-0">Banner</h4>
   							<button class="btn">
-								<img src="/svg/plus-square.svg">
+								<img src="/svg/plus-square.svg" alt="Hinzufügen-Symbol">
 							</button>
   						</div>
-					</li>
+					</div>
 					<?php
 						$bannerFileName = outputListGroupItems();
 					?>
-				</ul>
+				</div>
 			</div>
 			<div class="col-md-8 col-lg-9">
 				<div class="row">
@@ -88,7 +87,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 							<input type="text" id="input-title" class="form-control" aria-labelledby="banner-title-prepend" data-db-path="banners.title">
 							<div class="input-group-append">
 								<button class="btn btn-outline-input button-upload" tabindex="-1">
-									<img src="/svg/cloud-upload-fill.svg">
+									<img src="/svg/cloud-upload-fill.svg" alt="Hochladen-Symbol">
 								</button>
 							</div>
 						</div>
@@ -102,7 +101,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 							<textarea id="input-subtitle" class="form-control" aria-labelledby="banner-subtitle-prepend" data-db-path="banners.subtitle"></textarea>
 							<div class="input-group-append">
 								<button class="btn btn-outline-input button-upload">
-									<img src="/svg/cloud-upload-fill.svg">
+									<img src="/svg/cloud-upload-fill.svg" alt="Hochladen-Symbol">
 								</button>
 							</div>
 						</div>

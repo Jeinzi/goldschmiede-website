@@ -19,7 +19,6 @@ $connection = ConnectDB();
 $query = $connection->prepare("DELETE FROM banners WHERE id=?");
 $result = $query->execute(array($bannerId));
 if ($result === false) {
-	//TODO Error("Failed to query admins.");
 	echo 0;
 	exit;
 }

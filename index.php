@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="de">
 <head>
 	<?php
 		include("include/head.php");
@@ -33,9 +33,9 @@
 		while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 			echo "
 				<div class='carousel-item" . ($count == 0 ? " active" : "") . "'>
-					<img src='img/banner/" . $row["fileName"] . "' class='d-block w-100'>
+					<img src='img/banner/" . $row["fileName"] . "' class='d-block w-100' aria-labelledby='banner-title-" . $count . "'>
 					<div class='carousel-caption d-none d-md-block'>
-						<h5>" . $row['title'] . "</h5>
+						<h5 id=banner-title-" . $count . ">" . $row['title'] . "</h5>
 						<p>" . $row['subtitle'] . "</p>
 					</div>
 				</div>";
