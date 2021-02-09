@@ -11,12 +11,8 @@ if (isset($_SESSION['goldsmithLoggedIn'])) {
 	<title>Backend</title>
 <?php
 include("../head.php");
-//include("../php/general.php"); TODO remove
 ?>
-	<!-- <script src="/js/project.js" defer></script> -->
-	<!-- <link rel="stylesheet" href="/css/project.css"> -->
 	<link rel="stylesheet" href="css/backend.css?v=<?php echo time();?>"/> <!-- TODO: Remove time? -->
-	<!-- <script src="js/project-overview-functions.js"></script> -->
 </head>
 
 <body>
@@ -34,7 +30,7 @@ include("../head.php");
 								<img src="/svg/person-fill.svg">
 							</div>
 						</div>
-						<input type="text" name="input-username" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Identification">
+						<input type="text" name="input-username" class="form-control" id="input-username" placeholder="Identification">
 					</div>
 					<div class="input-group mb-4">
 	  					<div class="input-group-prepend">
@@ -42,7 +38,7 @@ include("../head.php");
 								<img src="/svg/key-fill.svg">
 							</div>
 						</div>
-						<input type="password" name="input-password" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Authorization code">
+						<input type="password" name="input-password" class="form-control" id="input-password" placeholder="Authorization code">
 					</div>
 					<button id="login-button" type="submit" class="btn btn-success">Login</button>
 				</div>
