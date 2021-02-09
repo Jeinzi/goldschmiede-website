@@ -126,7 +126,7 @@ function outputTags() {
 		data = JSON.parse(data);
 		console.log(data);
 		data.forEach(function(item, i) {
-			container.append(`<a href="#" class="badge" style="background-color: #${item.color}; color: #${item.textColor}">${item.name}</a> `);
+			container.append(`<a href="#" class="badge" style="background-color: #${item.color}; color: #${item.textColor};">${item.name}</a> `);
 		})
 	});
 }
