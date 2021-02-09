@@ -11,8 +11,8 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 <head>
 	<title>Backend</title>
 <?php
-	include("../head.php");
-	include("../php/general.php");
+	include("../php/head.php");
+	include("../php/utility.php");
 ?>
 </head>
 <body>

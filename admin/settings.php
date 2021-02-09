@@ -10,8 +10,8 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 <html>
 <head>
 	<?php
-		include("../head.php");
-		include("../php/general.php");
+		include("../php/head.php");
+		include("../php/utility.php");
 	?>
 	<title>Backend - Einstellungen</title>
 </head>
