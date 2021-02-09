@@ -7,7 +7,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 }
 ?>
 <!doctype html>
-<html>
+<html lang="de">
 <head>
 	<?php
 		include("../include/head.php");
@@ -37,7 +37,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 				<input type="text" class="form-control" aria-labelledby="name-prepend" data-db-path="imprint.name">
 				<div class="input-group-append">
 					<button class="btn btn-outline-input button-upload" tabindex="-1">
-						<img src="/svg/cloud-upload-fill.svg">
+						<img src="/svg/cloud-upload-fill.svg" alt="Hochladen-Symbol">
 					</button>
 				</div>
 			</div>
@@ -52,7 +52,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 				<input type="text" class="form-control" aria-labelledby="address-prepend" data-db-path="imprint.street">
 				<div class="input-group-append">
 					<button class="btn btn-outline-input button-upload" tabindex="-1">
-						<img src="/svg/cloud-upload-fill.svg">
+						<img src="/svg/cloud-upload-fill.svg" alt="Hochladen-Symbol">
 					</button>
 				</div>
 			</div>
@@ -67,7 +67,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 				<input type="text" class="form-control" aria-labelledby="city-prepend" data-db-path="imprint.city">
 				<div class="input-group-append">
 					<button class="btn btn-outline-input button-upload" tabindex="-1">
-						<img src="/svg/cloud-upload-fill.svg">
+						<img src="/svg/cloud-upload-fill.svg" alt="Hochladen-Symbol">
 					</button>
 				</div>
 			</div>
@@ -82,7 +82,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 				<input type="text" class="form-control" aria-labelledby="phone-prepend" data-db-path="imprint.phone">
 				<div class="input-group-append">
 					<button class="btn btn-outline-input button-upload" tabindex="-1">
-						<img src="/svg/cloud-upload-fill.svg">
+						<img src="/svg/cloud-upload-fill.svg" alt="Hochladen-Symbol">
 					</button>
 				</div>
 			</div>
@@ -97,7 +97,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 				<input type="text" class="form-control" aria-labelledby="email-prepend" data-db-path="imprint.email">
 				<div class="input-group-append">
 					<button class="btn btn-outline-input button-upload" tabindex="-1">
-						<img src="/svg/cloud-upload-fill.svg">
+						<img src="/svg/cloud-upload-fill.svg" alt="Hochladen-Symbol">
 					</button>
 				</div>
 			</div>
@@ -112,7 +112,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 				<input type="text" class="form-control" aria-labelledby="vat-id-prepend" data-db-path="imprint.vatId">
 				<div class="input-group-append">
 					<button class="btn btn-outline-input button-upload" tabindex="-1">
-						<img src="/svg/cloud-upload-fill.svg">
+						<img src="/svg/cloud-upload-fill.svg" alt="Hochladen-Symbol">
 					</button>
 				</div>
 			</div>
@@ -135,7 +135,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 				<input type="text" class="form-control" aria-labelledby="website-title-prepend" disabled="disabled">
 				<div class="input-group-append">
 					<button class="btn btn-outline-input button-upload" disabled="disabled" tabindex="-1">
-						<img src="/svg/cloud-upload-fill.svg">
+						<img src="/svg/cloud-upload-fill.svg" alt="Hochladen-Symbol">
 					</button>
 				</div>
 			</div>
@@ -147,11 +147,11 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 			<h2>Kontaktformular</h2>
 		</div>
 		<div class="col-lg-6">
-			<ul class="list-group">
+			<div class="list-group">
 				<span class='list-group-item'>EMail1@skdfh</span>
 				<span class='list-group-item'>EMail1@skdfh</span>
 				<!-- TODO -->
-			</ul>
+			</div>
 		</div>
 	</div>
 </div>

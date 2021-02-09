@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="de">
 <head>
 	<?php
 		include("include/head.php");
@@ -12,20 +12,6 @@
 </head>
 <body>
 <?php include("include/navbar.php"); ?>
-
-<div class="gallery-viewer-container" style="display: none;">
-	<div class="margin-container">
-		<div class="square-container">
-			<img id="gallery-image" src="/img/eheringe.jpeg">
-			<div class="text-container">
-				<h5 id="gallery-title">Titel</h5>
-				<p id="gallery-subtitle">Untertitel</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-
 
 <div class="container" style="margin-top:50px">
 	<div class="row">
@@ -46,18 +32,20 @@
 	}
 
 	// Get image names and (sub-)titles from database.
+	$firstImage = "";
 	$connection = connectdB();
 	$query = $connection->prepare("SELECT fileName,title,subtitle FROM galleryImages");
 	$result = $query->execute();
 	
 	while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 		$name = $row["fileName"];
-		if (!file_exists($thumbnailPath . $name)) {
+		$path = $thumbnailPath . $name;
+		if (!file_exists($path)) {
 			try {
 				$img = new Imagick($imgPath . $name);
 				$img->scaleImage(200, 0);
 				$img->setImageFormat("jpeg");
-				file_put_contents($thumbnailPath . $name, $img);
+				file_put_contents($path, $img);
 				$img->destroy();
 			}
 			catch (Exception $e) {
@@ -66,11 +54,28 @@
 			}
 		}
 
-		echo '<img src="' . $thumbnailPath . $name . '" class="img-thumbnail gallery-thumbnail" data-title="' . $row["title"] . '" data-subtitle="' . $row["subtitle"] . '"></img>';
+		echo '<img src="' . $path . '" class="img-thumbnail gallery-thumbnail" alt="' . $row["title"] . '" data-subtitle="' . $row["subtitle"] . '">';
+		if ($firstImage === "") {
+			$firstImage = $path;
+		}
 	}
 ?>
 		</div>
 	</div>
 </div>
+
+
+<div class="gallery-viewer-container" style="display: none;">
+	<div class="margin-container">
+		<div class="square-container">
+			<img id="gallery-image" src="<?php echo $firstImage; ?>" aria-labelledby="gallery-title" aria-describedby="gallery-subtitle">
+			<div class="text-container">
+				<h5 id="gallery-title">Titel</h5>
+				<p id="gallery-subtitle">Untertitel</p>
+			</div>
+		</div>
+	</div>
+</div>
+
 </body>
 </html>

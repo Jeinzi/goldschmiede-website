@@ -16,7 +16,7 @@ $('.gallery-thumbnail').click(function() {
     path = $(this).attr("src").replace("thumbnails/", "");
     img = $("#gallery-image");
     img.attr("src", path);
-    $("#gallery-title").text($(this).attr("data-title"));
+    $("#gallery-title").text($(this).attr("alt"));
     $("#gallery-subtitle").text($(this).attr("data-subtitle"));
 });
 

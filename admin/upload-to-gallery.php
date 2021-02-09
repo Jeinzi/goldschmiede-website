@@ -8,7 +8,7 @@ if(!isset($_SESSION['goldsmithLoggedIn']))
 }
 ?>
 <!doctype html>
-<html>
+<html lang="de">
 <head>
 	<title>Backend</title>
 <?php

@@ -7,7 +7,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 }
 ?>
 <!doctype html>
-<html>
+<html lang="de">
 <head>
 	<title>Backend</title>
 <?php
@@ -48,19 +48,19 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 	<div class="container-fluid mt-4">
 		<div class="row">
 			<div class="col-md-4 col-lg-3 mb-3">
-				<ul class="list-group" style="overflow-y:auto;max-height:700px;">
-					<li class="list-group-item">
+				<div class="list-group" style="overflow-y:auto;max-height:700px;">
+					<div class="list-group-item">
   						<div class="d-flex w-100 justify-content-between">
   							<h4 class="mb-0">Galerie</h4>
   							<button class="btn">
-								<img src="/svg/plus-square.svg">
+								<img src="/svg/plus-square.svg" alt="Hinzufügen-Symbol">
 							</button>
   						</div>
-					</li>
+					</div>
 					<?php
 						$firstFileName = outputListGroupItems();
 					?>
-				</ul>
+				</div>
 			</div>
 			<div class="col-md-8 col-lg-9">
 				<div class="row">
@@ -94,7 +94,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 							<input type="text" class="form-control" placeholder="" aria-labelledby="gallery-title-prepend" data-db-path="galleryImages.title">
 							<div class="input-group-append">
 								<button class="btn btn-outline-input button-upload" tabindex="-1">
-									<img src="/svg/cloud-upload-fill.svg">
+									<img src="/svg/cloud-upload-fill.svg" alt="Hochladen-Symbol">
 								</button>
 							</div>
 						</div>
@@ -108,7 +108,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 							<textarea class="form-control" placeholder="" aria-labelledby="gallery-subtitle-prepend" data-db-path="galleryImages.subtitle"></textarea>
 							<div class="input-group-append">
 								<button class="btn btn-outline-input button-upload" tabindex="-1">
-									<img src="/svg/cloud-upload-fill.svg">
+									<img src="/svg/cloud-upload-fill.svg" alt="Hochladen-Symbol">
 								</button>
 							</div>
 						</div>

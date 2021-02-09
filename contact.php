@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="de">
 <head>
 	<?php
 		include("include/head.php");
@@ -23,17 +23,17 @@
 		<div class="col-lg-6">
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<span class="input-group-text" id="basic-addon1">Name</span>
+					<span class="input-group-text" id="input-name-prepend">Name</span>
 				</div>
-				<input type="text" name="name" class="form-control" placeholder="Wie heißt du?" aria-label="Name" aria-describedby="basic-addon1">
+				<input type="text" name="name" class="form-control" placeholder="Wie heißt du?" aria-label="Name" aria-describedby="input-name-prepend">
 			</div>
 		</div>
 		<div class="col-lg-6">
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<span class="input-group-text" id="basic-addon1">Kontakt</span>
+					<span class="input-group-text" id="input-contact-prepend">Kontakt</span>
 				</div>
-				<input type="text" name="contact" class="form-control" placeholder="Wie kann ich dich erreichen?" aria-label="Contact" aria-describedby="basic-addon1">
+				<input type="text" name="contact" class="form-control" placeholder="Wie kann ich dich erreichen?" aria-label="Contact" aria-describedby="input-contact-prepend">
 			</div>
 		</div>
 	</div>
@@ -41,9 +41,9 @@
 		<div class="col-12">
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<span class="input-group-text" id="basic-addon1">Deine Nachricht</span>
+					<span class="input-group-text" id="input-text-prepend">Deine Nachricht</span>
 				</div>
-				<textarea name="text" class="form-control" aria-label="Text" aria-describedby="basic-addon1" style="height:200px"></textarea>
+				<textarea name="text" class="form-control" aria-label="Text" aria-describedby="input-text-prepend" style="height:200px"></textarea>
 			</div>
 		</div>
 	</div>
