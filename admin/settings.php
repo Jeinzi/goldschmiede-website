@@ -14,6 +14,51 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 		include("../include/utility.php");
 	?>
 	<title>Backend - Einstellungen</title>
+	<style>
+		.email-li-item {
+			padding: 0px;
+			display: flex;
+		}
+
+		.email-button {
+			border-radius: 0px;
+			height: 100%;
+			z-index: 2;
+			position: relative;
+			background-color: #dc3545;
+			border-color: #dc3545;
+		}
+
+		.email-li-item:first-child>.email-append>.email-button {
+			border-top-right-radius: .25rem;;
+		}
+
+		.email-li-item:last-child>.email-append>.email-button {
+			border-bottom-right-radius: .25rem;
+		}
+
+		.email-li-item>input {
+			border-top-right-radius: 0px;
+			border-top-left-radius: 0px;
+			border-bottom-right-radius: 0px;
+			margin-bottom: -1px;
+			margin-right: -1px;
+			margin-top: -1px;
+			margin-left: -1px;
+			padding-left: 1.25rem;
+		}
+
+		.email-append {
+			margin-bottom: -1px;
+			margin-right: -1px;
+			margin-top: -1px;
+		}
+
+		.email {
+			flex-grow: 1;
+			padding: .75rem 1.25rem;
+		}
+	</style>
 </head>
 <body>
 <?php
@@ -214,30 +259,12 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 		</div>
 		<div class="col-lg-6">
 			<div class="list-group">
-			<?php
-				$connection = connectdB();
-				
-				// Create row for settings if it does not exist.
-				$query = $connection->prepare("insert into freya.settings (id) values(1);");
-				try {
-					$query->execute();
-				}
-				catch (PDOException $e) {}
-
-				// Get mail addresses.
-				$query = $connection->prepare("select * from freya.contactEmails;");
-				$result = $query->execute();
-				if ($result === false) {
-					alert("Could not get emails.");
-					exit;
-				}
-				
-				$firstRow = true;
-				$rows = $query->fetchAll(PDO::FETCH_ASSOC);
-				foreach ($rows as $row) {
-					echo '<span class="list-group-item">' . $row["email"] . '</span>';
-				}
-			?>
+				<div class="list-group-item email-li-item">
+					<input type="text" class="form-control" placeholder="Neue Adresse">
+					<div class="email-append">
+						<button id="add-email-button" class="btn"><img src="/svg/cloud-upload-fill.svg" alt="Hochladen-Symbol"></button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -250,7 +277,83 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 	// Load data from server and display it in input fields.
 	$('.input-group-append .button-upload').each(function() {
 		fillInputField($(this), 1);
-	})
+	});
+
+	// Output email list item
+	function outputEmail(email, id) {
+		var input = $(".list-group-item>input").parent().detach();
+		$(".list-group").append(`<div class="list-group-item email-li-item">
+		 <div class="email">${email}</div>
+		 <div class="email-append"><button class="btn email-button" data-id="${id}"><img src="/svg/trash-fill-white.svg" style="color: white;" alt="Mülleimer-Symbol"></button></div>
+		 </div>`);
+		 $(".list-group").append(input);
+	}
+
+	// Delete emails.
+	$(document).on("click", ".email-button", function() {
+		var button = $(this);
+		$.get("delete-email.php", {id: button.attr("data-id")}, function(data) {
+			if (data == 1) {
+				button.parent().parent().remove();
+			}
+		});
+	});
+
+	// Add emails.
+	$("#add-email-button").click(function() {
+		var input = $(this).parent().siblings("input");
+		var email = input.val().trim();
+		if (email === "") {
+			return;
+		}
+		$.get("add-email.php", {email: email}, function(data) {
+			console.log(data);
+			if (data != 0) {
+				input.val("");
+				outputEmail(email, data);
+			}
+		})
+	});
+
+	// When pressing enter in an input field, execute the corresponding button's action.
+	$('.list-group-item>input').keypress(function(e) {
+		// Exit if the enter key hasn't been pressed.
+		if(e.which != 13) {
+			return;
+		}
+
+		$("#add-email-button").click();
+	});
 </script>
+
+
+
+<?php
+	/**************** Output Email Addresses ****************/
+	$connection = connectdB();
+	
+	// Create row for settings if it does not exist.
+	$query = $connection->prepare("insert into freya.settings (id) values(1);");
+	try {
+		$query->execute();
+	}
+	catch (PDOException $e) {}
+
+	// Get mail addresses.
+	$query = $connection->prepare("select * from freya.contactEmails;");
+	$result = $query->execute();
+	if ($result === false) {
+		alert("Could not get emails.");
+		exit;
+	}
+				
+	$firstRow = true;
+	$rows = $query->fetchAll(PDO::FETCH_ASSOC);
+	echo '<script>';
+	foreach ($rows as $row) {
+		echo 'outputEmail("' . $row["email"] . '", ' . $row["id"] . ');';
+	}
+	echo '</script>';
+?>
 </body>
 </html>

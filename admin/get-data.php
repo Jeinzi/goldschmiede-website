@@ -61,7 +61,7 @@ if (array_key_exists($table, $permittedCols) &&
     $connection = connectdB();
     $query = $connection->prepare("SELECT " . $column . " FROM " . $table . " WHERE id=?");
     $result = $query->execute(array($id));
-    if ($result == false) {
+    if ($result === false) {
     	exit;
     }
 }
