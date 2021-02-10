@@ -66,6 +66,16 @@
                     <td><a href="/admin/res/login.js">login.js</a></td>
                 </tr>
                 <tr>
+                    <td><a href="/admin/res/tags.js">tags.js</a></td>
+                    <td><a href="http://www.jclark.com/xml/copying.txt">MIT</a></td>
+                    <td><a href="/admin/res/tags.js">tags.js</a></td>
+                </tr>
+                <tr>
+                    <td><a href="/admin/res/settings.js">settings.js</a></td>
+                    <td><a href="http://www.jclark.com/xml/copying.txt">MIT</a></td>
+                    <td><a href="/admin/res/settings.js">settings.js</a></td>
+                </tr>
+                <tr>
                     <td><a href="/admin/res/uploadfield.js">uploadfield.js</a></td>
                     <td><a href="http://www.jclark.com/xml/copying.txt">MIT</a></td>
                     <td><a href="/admin/res/uploadfield.js">uploadfield.js</a></td>
