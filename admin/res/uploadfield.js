@@ -81,5 +81,15 @@ $('div.input-group input').keypress(function(e) {
 		return;
 	}
 
-	clickUpdateButton.call($(this).siblings('.input-group-append').children());
+	uploadFieldData($(this).siblings(".input-group-append").children("button"), getUploadId());
+});
+
+// When pressing ctrl+enter in an textarea, execute the corresponding button's action.
+$('div.input-group textarea').keypress(function(e) {
+	// Exit if ctrl+enter key hasn't been pressed.
+	if(e.which != 13 || !e.ctrlKey) {
+		return;
+	}
+
+	uploadFieldData($(this).siblings(".input-group-append").children("button"), getUploadId());
 });

@@ -46,14 +46,14 @@ function connectDb() {
 
 function getWebsiteTitle() {
 	$connection = connectDb();
-	$query = $connection->prepare("SELECT name FROM imprint WHERE id=1");
+	$query = $connection->prepare("SELECT websiteTitle FROM settings WHERE id=1");
 	$result = $query->execute();
-	if ($result == false) {
-		alert("Failed to query imprint.");
+	if ($result === false) {
+		alert("Failed to query settings.");
 	}
 
 	$first = true;
 	$row = $query->fetch(PDO::FETCH_ASSOC);
-	return $row["name"];
+	return $row["websiteTitle"];
 }
 ?>

@@ -4,6 +4,8 @@ $name = $_POST['name'];
 $contact = $_POST['contact'];
 $text = $_POST['text'];
 
+include("include/utility.php");
+
 
 // Generate message directory.
 $messagePath = "messages/";
@@ -18,17 +20,44 @@ $notificationText = "Name: " . $name . "\n" .
 
 
 // Send email.
-$empfaenger = ''; // TODO: Add emails, separated by commas.
-$betreff = 'Kontaktanfrage Website';
-$nachricht = $notificationText;
-$header = 'From: kontakt@freya-goldschmie.de' . "\r\n" .
-    'Reply-To: kontakt@freya-goldschmie.de' . "\r\n" . // TODO: Needed?
+$connection = connectdB();
+$query = $connection->prepare("select * from freya.settings;");
+$result = $query->execute();
+if ($result === false) {
+	$mailSuccess = false;
+}
+$settingsRow = $query->fetch(PDO::FETCH_ASSOC);
+
+
+$query = $connection->prepare("select * from freya.contactEmails;");
+$result = $query->execute();
+if ($result === false) {
+	$mailSuccess = false;
+}
+else {
+    $firstRow = true;
+    $recipient = '';
+    $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($rows as $row) {
+        if ($firstRow) {
+            $firstRow = false;
+        }
+        else {
+            $recipient .= ",";
+        }
+        $recipient .= "";
+    }
+
+    $subject = $settingsRow["contactSubject"];
+    $message = $notificationText;
+    $header = 'From: ' . $settingsRow["contactFrom"] . "\r\n" .
+    'Reply-To: ' . $settingsRow["contactReplyTo"] . "\r\n" . // TODO: Needed?
     'Date: ' . date('r') . "\r\n" .
-    'Sender: kontakt@freya-goldschmie.de' . "\r\n" .
+    'Sender: ' . $settingsRow["contactSender"] . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
-
-
-$mailSuccess = mail($empfaenger, $betreff, $nachricht, $header);
+   
+    $mailSuccess = mail($recipient, $subject, $message, $header);
+}
 
 // Write to file.
 $fileSuccess = true;
