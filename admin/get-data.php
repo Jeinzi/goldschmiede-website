@@ -36,6 +36,13 @@ $permittedCols = [
     "galleryImages" => [
         "title",
         "subtitle"
+    ],
+    "settings" => [
+        "websiteTitle",
+        "contactSubject",
+        "contactFrom",
+        "contactSender",
+        "contactReplyTo"
     ]
 ];
 

@@ -17,7 +17,7 @@ $id = $_GET['id'];
 $connection = connectdB();
 $query = $connection->prepare("select name,color,textColor from freya.galleryTags,freya.tags WHERE galleryTags.imgId=? AND galleryTags.tagId = tags.id;");
 $result = $query->execute(array($id));
-if ($result == false) {
+if ($result === false) {
 	exit;
 }
 

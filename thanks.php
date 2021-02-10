@@ -50,7 +50,7 @@
 					echo '<p class="card-text"><small class="text-muted">Du bist super!</small></p>';
 				}
 				else {
-					echo '<p class="card-text">Leider konnte deine Nachricht nicht gespeichert werden. Du kannst mich gerne auf andere Weise kontaktieren, siehe <a href="imprint">Impressum</a>.</p>';
+					echo '<p class="card-text">Leider konnte deine Nachricht nicht gesendet werden. Du kannst mich gerne auf andere Weise kontaktieren, siehe <a href="imprint">Impressum</a>.</p>';
 					echo '<p class="card-text"><small class="text-muted">Danke für dein Interesse!</small></p>';
 				}
 				?>
