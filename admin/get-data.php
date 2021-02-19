@@ -35,7 +35,8 @@ $permittedCols = [
     ],
     "galleryImages" => [
         "title",
-        "subtitle"
+        "subtitle",
+        "price"
     ],
     "settings" => [
         "websiteTitle",

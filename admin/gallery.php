@@ -107,6 +107,20 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 								</button>
 							</div>
 						</div>
+
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<div id="price-prepend" class="input-group-text">
+									Preis
+								</div>
+							</div>
+							<input type="text" class="form-control" placeholder="" aria-labelledby="price-prepend" data-db-path="galleryImages.price">
+							<div class="input-group-append">
+								<button class="btn btn-outline-input button-upload" tabindex="-1">
+									<img src="/svg/cloud-upload-fill.svg" alt="Hochladen-Symbol">
+								</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
