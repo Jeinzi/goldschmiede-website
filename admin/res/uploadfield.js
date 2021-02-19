@@ -33,6 +33,11 @@ function fillInputFields() {
     })
 }
 
+function makeFailButton(button) {
+	button.children().attr("src", "/svg/x-white.svg").attr("alt", "Fehler-Symbol");
+	button.removeClass().addClass('btn btn-danger button-upload');
+}
+
 
 
 /**************** BINDINGS ****************/
@@ -63,9 +68,11 @@ function uploadFieldData(button, id) {
 			button.removeClass().addClass('btn btn-success button-upload');
 		}
 		else {
-			button.children().attr("src", "/svg/x-white.svg").attr("alt", "Fehler-Symbol");
-			button.removeClass().addClass('btn btn-danger button-upload');
+			makeFailButton(button);
 		}
+	})
+	.fail(function(res) {
+		makeFailButton(button);
 	});
 }
 
