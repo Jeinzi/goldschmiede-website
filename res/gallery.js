@@ -1,6 +1,9 @@
 function resizeImageContainer() {
-    $('.square-container').css('width', 'auto');
-    $('.square-container').css('width', $("#gallery-image").width()+'px');
+    $('.content-container').css('width', 'auto');
+    $('.content-container').css('height', 'auto');
+    imageWidth = $("#gallery-image").width() + 'px';
+    containerHeight = $(".content-container").height() + 'px'
+    $('.content-container').css('width', imageWidth).css('height', containerHeight);
 }
 
 $(window).resize(resizeImageContainer);
@@ -22,4 +25,8 @@ $('.gallery-thumbnail').click(function() {
 
 $('.gallery-viewer-container').click(function() {
     $(".gallery-viewer-container").hide();
+})
+
+$('.text-container').click(function(e) {
+   e.stopPropagation();
 })

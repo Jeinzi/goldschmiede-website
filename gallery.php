@@ -69,11 +69,12 @@
 
 <div class="gallery-viewer-container" style="display: none;">
 	<div class="margin-container">
-		<div class="square-container">
+		<div class="content-container">
 			<img id="gallery-image" src="<?php echo $firstImage; ?>" aria-labelledby="gallery-title" aria-describedby="gallery-subtitle">
 			<div class="text-container">
-				<h5 id="gallery-title">Titel</h5>
+				<h4 id="gallery-title">Titel</h4>
 				<p id="gallery-subtitle">Untertitel</p>
+				<button id="button-buy" class="btn"><img src="/svg/cart.svg" alt="Einkaufswagen-Symbol"></button>
 			</div>
 		</div>
 	</div>
