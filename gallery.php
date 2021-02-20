@@ -45,12 +45,14 @@
 				$img = new Imagick($imgPath . $name);
 				$img->scaleImage(200, 0);
 				$img->setImageFormat("jpeg");
-				file_put_contents($path, $img);
+				$result = file_put_contents($path, $img);
 				$img->destroy();
+				if ($result === false) {
+					alert("Thumbnail for '" . $name . "' could not be saved.");
+				}
 			}
 			catch (Exception $e) {
 				alert("Thumbnail for '" . $name . "'could not be generated.");
-				continue;
 			}
 		}
 
