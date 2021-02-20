@@ -27,7 +27,7 @@ function fillInputField(uploadButton, id)
 
 // Fill all input fields with data from the database.
 function fillInputFields() {
-    var id = getActiveListItemId();
+    var id = getUploadId();
     $('.input-group-append .button-upload').each(function() {
         fillInputField($(this), id);
     })
@@ -78,7 +78,7 @@ function uploadFieldData(button, id) {
 
 // Reset button state if something is entered into the corresponding input field.
 $('input, textarea').on('input', function() {
-	resetUploadButton($(this).siblings(".input-group-append").children("button"));
+	resetUploadButton($(this).siblings(".input-group-append").children("button.button-upload"));
 });
 
 // When pressing enter in an input field, execute the corresponding button's action.
@@ -88,7 +88,7 @@ $('div.input-group input').keypress(function(e) {
 		return;
 	}
 
-	uploadFieldData($(this).siblings(".input-group-append").children("button"), getUploadId());
+	uploadFieldData($(this).siblings(".input-group-append").children("button.button-upload"), getUploadId());
 });
 
 // When pressing ctrl+enter in an textarea, execute the corresponding button's action.
@@ -98,5 +98,5 @@ $('div.input-group textarea').keypress(function(e) {
 		return;
 	}
 
-	uploadFieldData($(this).siblings(".input-group-append").children("button"), getUploadId());
+	uploadFieldData($(this).siblings(".input-group-append").children("button.button-upload"), getUploadId());
 });
