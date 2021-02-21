@@ -1,9 +1,9 @@
 function resizeImageContainer() {
     $('.content-container').css('width', 'auto');
     $('.content-container').css('height', 'auto');
-    imageWidth = $("#gallery-image").width() + 'px';
+    imageHeight = $("#gallery-image").height() + 'px';
     containerHeight = $(".content-container").height() + 'px'
-    $('.content-container').css('width', imageWidth).css('height', containerHeight);
+    $('.content-container').css('width', imageHeight).css('height', containerHeight);
 }
 
 $(window).resize(resizeImageContainer);

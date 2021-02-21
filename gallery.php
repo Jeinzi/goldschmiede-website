@@ -73,7 +73,7 @@
 			<img id="gallery-image" src="<?php echo $firstImage; ?>" aria-labelledby="gallery-title" aria-describedby="gallery-subtitle">
 			<div class="text-container">
 				<h4 id="gallery-title">Titel</h4>
-				<button id="button-buy" class="btn"><img src="/svg/cart.svg" alt="Einkaufswagen-Symbol"></button>
+				<!-- <button id="button-buy" class="btn"><img src="/svg/cart.svg" alt="Einkaufswagen-Symbol"></button> -->
 				<p id="gallery-subtitle">Untertitel</p>
 			</div>
 		</div>
