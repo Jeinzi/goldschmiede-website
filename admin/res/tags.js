@@ -46,12 +46,12 @@ function showChanges() {
     tag.text(getCurrentName());
 }
 
-$('#input-name').on('input', function() {
+$("#input-name").on("input", function() {
 	showChanges();
 });
 
 
-$('#input-color').on('input', function() {
+$("#input-color").on("input", function() {
     $("#button-text-color").css("background-color", getCurrentColor());
 	showChanges();
 });
@@ -64,7 +64,18 @@ $(document).on("click", ".badge", function() {
 
 
 $("#button-upload").click(function() {
-    var btn = $(this);
+    updateTag();
+});
+
+
+$("#input-name").keypress(function(e) {
+    if(e.which == 13) {
+		updateTag();
+	}
+});
+
+
+function updateTag() {
     $.get("update-tag", {
         id: getActiveId(),
         name: getCurrentName(),
@@ -73,9 +84,9 @@ $("#button-upload").click(function() {
     },
     function(response) {
         var newClass = (response == 1 ? "btn-success" : "btn-danger");
-        btn.addClass(newClass);
+        $("#button-upload").addClass(newClass);
     });
-});
+}
 
 
 function resetUploadButton() {
