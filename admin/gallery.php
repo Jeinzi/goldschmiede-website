@@ -11,6 +11,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 <head>
 	<title>Backend</title>
 	<?php include("../include/head.php"); ?>
+	<link rel="stylesheet" href="res/backend.css">
 </head>
 <body>
 <?php
@@ -127,18 +128,28 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 <script src="res/uploadfield.js"></script>
 <script src="res/list.js"></script>
 <script>
+$("#tag-container").on("click", "[class=tag-x]", function() {
+	var badge = $(this).parent(".badge");
+	$.get('disconnect-tag', {
+		tagId: badge.attr('data-tag-id'),
+		imgId: getUploadId()
+	}).done(function(response) {
+		if (response == 1) {
+			badge.remove();
+		}
+	});
+});
+
 fillInputFields();
 outputTags();
 
 function outputTags() {
 	var container = $("#tag-container");
-	container.children("a").remove();
+	container.children("span").remove();
 	$.get("get-tags", {id: getActiveListItemId()}, function(data) {
-		console.log(data);
 		data = JSON.parse(data);
-		console.log(data);
 		data.forEach(function(item, i) {
-			container.append(`<a href="#" class="badge" style="background-color: #${item.color}; color: #${item.textColor};">${item.name}</a> `);
+			container.append(`<span class="badge" style="background-color: #${item.color}; color: #${item.textColor};" data-tag-id="${item.tagId}">${item.name} <img class="tag-x" src="/svg/x.svg"></span> `);
 		})
 	});
 }
