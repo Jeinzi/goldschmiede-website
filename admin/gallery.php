@@ -45,17 +45,58 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 		return $firstFileName;
 	}
 ?>
+	<div class="modal fade" id="tag-modal" tabindex="-1" aria-labelledby="tag-modal-label" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="tag-modal-label">Tags hinzufügen</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<?php
+						try {
+							$connection = connectdB();
+							$query = $connection->prepare("select * from freya.tags;");
+							$result = $query->execute();
+						}
+						catch (PDOException $e) {
+							alert("Exception: Can't get tags from database.");
+							exit;
+						}
+						if ($result === false) {
+							alert("Can't get tags from database.");
+							exit;
+						}
+
+						$rows = $query->fetchAll(PDO::FETCH_ASSOC);
+						foreach ($rows as $row) {
+							$name = $row["name"] == "" ? " " : $row["name"];
+							template("tag", array(
+								"bgColor" => $row["color"],
+								"textColor" => $row["textColor"],
+								"id" => $row["id"],
+								"name" => $row["name"],
+							));
+						}
+					?>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="container-fluid mt-4">
 		<div class="row">
 			<div class="col-md-4 col-lg-3 mb-3">
 				<div class="list-group" style="overflow-y:auto;max-height:700px;">
 					<div class="list-group-item">
-  						<div class="d-flex w-100 justify-content-between">
-  							<h4 class="mb-0">Galerie</h4>
-  							<button class="btn">
-								<img src="/svg/plus-square.svg" alt="Hinzufügen-Symbol">
-							</button>
-  						</div>
+							<div class="d-flex w-100 justify-content-between">
+								<h4 class="mb-0">Galerie</h4>
+								<button class="btn">
+									<img src="/svg/plus-square.svg" alt="Hinzufügen-Symbol">
+								</button>
+							</div>
 					</div>
 					<?php
 						$firstFileName = outputListGroupItems();
@@ -75,6 +116,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 					<!-- Tags -->
 					<div id="tag-container" class="col-lg-4 col-xl-2 mb-2">
 						<h3 class="border-bottom pb-1 d-none d-lg-block">Tags</h3>
+						<span id="add-tag" title="Tags hinzufügen" class="badge badge-primary" data-toggle="modal" data-target="#tag-modal">+</span>
 					</div>
 				</div>
 				<div class="row">
@@ -130,6 +172,11 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 <script src="res/uploadfield.js"></script>
 <script src="res/list.js"></script>
 <script>
+fillInputFields();
+outputTags();
+
+
+// Click on the 'X' on a tag.
 $("#tag-container").on("click", "[class=tag-x]", function() {
 	var badge = $(this).parent(".badge");
 	$.get('disconnect-tag', {
@@ -142,18 +189,46 @@ $("#tag-container").on("click", "[class=tag-x]", function() {
 	});
 });
 
-fillInputFields();
-outputTags();
+
+// Click on a tag in the popup modal.
+$(".tag").click(function() {
+	var id = $(this).attr("data-id");
+	var bgColor = $(this).css("background-color");
+	var textColor = $(this).css("color");
+	var name = $(this).text();
+	$.get("connect-tag", {
+		tagId: id,
+		imgId: getUploadId()
+	}, function(response) {
+		if (response == 1) {
+			showTag({
+				tagId: id,
+				name: name,
+				color: bgColor,
+				textColor: textColor
+			});
+		}
+	});
+});
 
 function outputTags() {
-	var container = $("#tag-container");
-	container.children("span").remove();
+	$("#tag-container").children("span:not(#add-tag)").remove();
 	$.get("get-tags", {id: getActiveListItemId()}, function(data) {
 		data = JSON.parse(data);
 		data.forEach(function(item, i) {
-			container.append(`<span class="badge" style="background-color: #${item.color}; color: #${item.textColor};" data-tag-id="${item.tagId}">${item.name} <img class="tag-x" src="/svg/x.svg"></span> `);
+			showTag(item);
 		})
 	});
+}
+
+function showTag(obj) {
+	if (obj.color[0] != 'r') {
+		obj.color = "#" + obj.color;
+	}
+	if (obj.textColor[0] != 'r') {
+		obj.textColor = "#" + obj.textColor;
+	}
+	$("#tag-container").append(`<span class="badge" style="background-color: ${obj.color}; color: ${obj.textColor};" data-tag-id="${obj.tagId}">${obj.name} <span title="Tag entfernen" class="tag-x">X</span></span> `);
 }
 
 function getUploadId() {

@@ -2,14 +2,14 @@
 // Check for existing session.
 session_start();
 if (!isset($_SESSION['goldsmithLoggedIn'])) {
-	header('Location: .');
-	exit;
+    header('Location: .');
+    exit;
 }
 ?>
 <!doctype html>
 <html lang="de">
 <head>
-	<title>Backend</title>
+    <title>Backend</title>
     <?php include("../include/head.php"); ?>
     <style>
         #button-delete {
@@ -28,17 +28,23 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 
 <div class="container">
     <div class="row">
-		<div class="col-12">
-			<h1 class="main-heading border-bottom">Tags</h1>
-		</div>
-	</div>
+        <div class="col-12">
+            <h1 class="main-heading border-bottom">Tags</h1>
+        </div>
+    </div>
     <div class="row">
         <div id="tag-container" class="col-md-4">
             <?php
-                $connection = connectdB();
-                $query = $connection->prepare("select * from freya.tags;");
-                $result = $query->execute();
-                if ($result == false) {
+                try {
+                    $connection = connectdB();
+                    $query = $connection->prepare("select * from freya.tags;");
+                    $result = $query->execute();
+                }
+                catch (PDOException $e) {
+                    alert("Exception: Can't get tags from database.");
+                    exit;
+                }
+                if ($result === false) {
                     alert("Can't get tags from database.");
                     exit;
                 }
@@ -46,7 +52,12 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
                 $rows = $query->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($rows as $row) {
                     $name = $row["name"] == "" ? " " : $row["name"];
-                    echo '<a href="#" class="badge" style="background-color: #' . $row["color"] . '; color: #' . $row["textColor"] . ';" data-id="' . $row["id"] . '">' . $name . '</a> ';
+                    template("tag", array(
+                        "bgColor" => $row["color"],
+                        "textColor" => $row["textColor"],
+                        "id" => $row["id"],
+                        "name" => $row["name"],
+                    ));
                 }
             ?>
         </div>
