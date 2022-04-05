@@ -7,6 +7,7 @@ README.md
 index-content.html
 
 svg/*
+!svg/LICENSE.md
 !svg/check-circle-fill-white.svg
 !svg/x-white.svg
 !svg/cloud-upload-fill.svg
