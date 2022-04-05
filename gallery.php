@@ -1,11 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-	<?php
-		include("include/head.php");
-		include("include/utility.php");
-		$websiteTitle = getWebsiteTitle();
-	?>
+	<?php include("include/head.php"); ?>
 	<title><?= $websiteTitle ?> - Galerie </title>
 	<script src="/res/gallery.js" defer></script>
 	<link rel="stylesheet" href="res/gallery.css">

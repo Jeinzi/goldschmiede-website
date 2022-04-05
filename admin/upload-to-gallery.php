@@ -11,10 +11,7 @@ if(!isset($_SESSION['goldsmithLoggedIn']))
 <html lang="de">
 <head>
 	<title>Backend</title>
-<?php
-include("../include/head.php");
-include("../include/utility.php")
-?>
+	<?php include("../include/head.php"); ?>
 </head>
 <body>
 <?php include("include/navbar.php"); ?>

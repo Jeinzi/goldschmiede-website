@@ -18,3 +18,8 @@
 <meta name="theme-color" content="#ffffff">
 
 <link rel="stylesheet" href="/res/general.css">
+
+<?php
+  include($_SERVER["DOCUMENT_ROOT"] . "/include/utility.php");
+  $websiteTitle = getWebsiteTitle();
+?>

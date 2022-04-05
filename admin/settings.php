@@ -9,10 +9,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 <!doctype html>
 <html lang="de">
 <head>
-	<?php
-		include("../include/head.php");
-		include("../include/utility.php");
-	?>
+	<?php include("../include/head.php"); ?>
 	<title>Backend - Einstellungen</title>
 	<style>
 		.email-li-item {

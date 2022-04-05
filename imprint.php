@@ -1,12 +1,8 @@
 <!doctype html>
 <html lang="de">
 <head>
-	<?php
-		include("include/head.php");
-        include("include/utility.php");
-        $websiteTitle = getWebsiteTitle();
-    ?>
-    <title><?= $websiteTitle ?> - Impressum </title>
+	<?php include("include/head.php"); ?>
+  <title><?= $websiteTitle ?> - Impressum </title>
 </head>
 <body>
 <?php

@@ -9,9 +9,7 @@ if (isset($_SESSION['goldsmithLoggedIn'])) {
 <html lang="de">
 <head>
 	<title>Backend</title>
-<?php
-include("../include/head.php");
-?>
+	<?php include("../include/head.php"); ?>
 	<link rel="stylesheet" href="res/backend.css">
 </head>
 

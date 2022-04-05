@@ -13,7 +13,6 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 	<?php
 		include("../include/head.php");
 		include("include/head.php");
-		include("../include/utility.php");
 	?>
 </head>
 <body>

@@ -56,4 +56,27 @@ function getWebsiteTitle() {
 	$row = $query->fetch(PDO::FETCH_ASSOC);
 	return $row["websiteTitle"];
 }
+
+
+/**
+ * Fill values from associative array into template and output it.
+ *
+ * @param $file - Name of the template.
+ * @param $args - Associative array of variables to use in the template.
+ */
+function template($name, $args) {
+	$path = $_SERVER["DOCUMENT_ROOT"] . "/res/template/" . $name . ".php";
+	if (!file_exists($path)) {
+		echo "No file: " . $path;
+		return;
+	}
+	if (!is_array($args)) {
+		echo "No array";
+		return;
+	}
+  if (file_exists($path) && is_array($args)) {
+    extract($args);
+		include($path);
+  }
+}
 ?>
