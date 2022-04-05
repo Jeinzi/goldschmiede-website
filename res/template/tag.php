@@ -1,1 +1,1 @@
-<a href="#" class="badge tag" style="background-color: #<?= $bgColor ?>; color: #<?= $textColor ?>;" data-id="<?= $id ?>"><?= $name ?></a> 
+<span class="badge tag" style="background-color: #<?= $bgColor ?>; color: #<?= $textColor ?>;" data-id="<?= $id ?>"><?= $name ?></span>

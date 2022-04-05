@@ -57,9 +57,16 @@ $("#input-color").on("input", function() {
 });
 
 
+// Remove tags that have not been uploaded.
+function removeNotUploaded() {
+    $("#tag-container").children(":not([data-id])").remove();
+}
+
+
 $(document).on("click", ".badge", function() {
     selectTag($(this));
     resetUploadButton();
+    removeNotUploaded();
 });
 
 
@@ -76,6 +83,7 @@ $("#input-name").keypress(function(e) {
 
 
 function updateTag() {
+    id = getActiveId();
     $.get("update-tag", {
         id: getActiveId(),
         name: getCurrentName(),
@@ -83,7 +91,18 @@ function updateTag() {
         textColor: getCurrentTextColor().slice(1,7)
     },
     function(response) {
-        var newClass = (response == 1 ? "btn-success" : "btn-danger");
+        var newClass = "";
+        if (id == null) {
+            // A new tag has been uploaded. The return value is its
+            // id or 0 on error. Yes, this will fail if the database
+            // is empty.
+            getActiveTag().attr("data-id", response);
+            newClass = (response != 0 ? "btn-success" : "btn-danger");
+        }
+        else {
+            // An existing tag has been updated.
+            newClass = (response == 1 ? "btn-success" : "btn-danger");
+        }
         $("#button-upload").addClass(newClass);
     });
 }
@@ -121,6 +140,7 @@ $("#button-delete").click(function() {
     });
 });
 
+
 $("#button-text-color").click(function() {
     if (rgb2hex($(this).css("color")) == "#000000") {
         $(this).css("color", "#FFFFFF");
@@ -131,5 +151,31 @@ $("#button-text-color").click(function() {
     $(this).one('transitionend', showChanges);
 });
 
+
+function addNewTag() {
+    var letters = '0123456789ABCDEF';
+    var bgColor = '#';
+    for (var i = 0; i < 6; i++) {
+        bgColor += letters[Math.floor(Math.random() * 16)];
+    }
+    var obj = $("<span>").addClass("badge")
+                         .addClass("tag")
+                         .css("color", "#000000")
+                         .css("background-color", bgColor)
+                         .text(" ");
+    $("#tag-container").append(obj);
+    $(" ").insertAfter(obj);
+    selectTag(obj);
+    $("#input-name").val("");
+    $("#input-name").focus();
+}
+
+$("#button-add-tag").click(function() {
+    removeNotUploaded();
+    addNewTag();
+});
+
+
+
 // Select first tag.
-selectTag($("#tag-container a:first-child"));
+selectTag($("#tag-container span:first-child"));

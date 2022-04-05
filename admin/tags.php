@@ -22,6 +22,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
             border: 2px solid black;
         }
     </style>
+    <link rel="stylesheet" href="res/backend.css">
 </head>
 <body>
 <?php include("include/navbar.php"); ?>
@@ -29,7 +30,11 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="main-heading border-bottom">Tags</h1>
+            <h1 class="main-heading border-bottom">Tags
+                <button id="button-add-tag" class="btn btn-outline-input" style="float: right;">
+                    <img src="/svg/plus.svg" alt="Plus-Zeichen">
+                </button>
+            </h1>
         </div>
     </div>
     <div class="row">
@@ -59,8 +64,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
                         "name" => $row["name"],
                     ));
                 }
-            ?>
-        </div>
+      ?></div>
         <div class="col-md-8">
             <div class="input-group mb-2">
                 <div class="input-group-prepend">

@@ -80,6 +80,11 @@
 	cursor: pointer;
 }
 
+.tag {
+	cursor: pointer;
+	margin-right: 0.25rem;
+}
+
 
 
 /* Legacy code. */
