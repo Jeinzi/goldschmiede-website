@@ -120,6 +120,10 @@ $("#input-name").on("input", function() {
 
 
 $("#button-delete").click(function() {
+    $(".modal-body").text(`Soll der Tag "${getCurrentName()}" wirklich gelöscht werden? Es werden auch alle Zuordnungen dieses Tags zu Bildern gelöscht.`);
+});
+
+$("#button-delete-definitely").click(function() {
     $.get("update-tag", {delete: true, id: getActiveId()}, function(response) {
         if (response == 0) {
             return;

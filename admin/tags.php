@@ -27,6 +27,25 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 <body>
 <?php include("include/navbar.php"); ?>
 
+<!-- Modal for tag deletion -->
+<div class="modal fade" id="delete-confirmation" tabindex="-1" aria-labelledby="delete-confirmation-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="delete-confirmation-label">Jo, bitte bestätigen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">d</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Nö, doch nicht</button>
+        <button type="button" id="button-delete-definitely" class="btn btn-danger" data-dismiss="modal">Ja, ernsthaft</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -85,7 +104,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
                     </button>
                 </div>
             </div>
-            <button id="button-delete" class="btn btn-outline-input">
+            <button id="button-delete" data-toggle="modal" data-target="#delete-confirmation" class="btn btn-outline-input">
                 <img src="/svg/trash-fill-white.svg" alt="Mülleimer-Symbol">
             </button>
         </div>
