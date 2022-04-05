@@ -9,28 +9,28 @@ function resetUploadButtons() {
 
 function resetUploadButton(uploadButton) {
 	uploadButton.removeClass().addClass('btn btn-outline-input button-upload')
-				.children().attr("src", "/svg/cloud-upload-fill.svg")
-						   .attr("alt", "Hochladen-Symbol");
+							.children().attr("src", "/svg/cloud-upload-fill.svg")
+							.attr("alt", "Hochladen-Symbol");
 }
 
 // Get data from the server and fill it in the text field.
 function fillInputField(uploadButton, id)
 {
-    var input = uploadButton.parent().siblings("input, textarea");
+  var input = uploadButton.parent().siblings("input, textarea");
 
 	// Request and display information.
 	$.get('get-data.php', {path: input.attr('data-db-path'), "id": id}).done(function(data) {
-        data = JSON.parse(data);
+    data = JSON.parse(data);
 		input.val(data.value);
 	});
 }
 
 // Fill all input fields with data from the database.
 function fillInputFields() {
-    var id = getUploadId();
-    $('.input-group-append .button-upload').each(function() {
-        fillInputField($(this), id);
-    })
+  var id = getUploadId();
+  $('.input-group-append .button-upload').each(function() {
+    fillInputField($(this), id);
+  })
 }
 
 function makeFailButton(button) {
@@ -59,8 +59,8 @@ function uploadFieldData(button, id) {
 	var payloadString = `{"id":"${id}","path":"${input.attr('data-db-path')}","value":"${input.val().trim()}"}`;
 	var jsonObject = JSON.parse(payloadString);
 
-    // Send an update request to the server with the data field to be updated
-    // and the row's id along with the new data.
+  // Send an update request to the server with the data field to be updated
+  // and the row's id along with the new data.
 	$.get('update-data.php', jsonObject).done(function(data) {
 		// Adapt the button style according to the success of the request.
 		if(data == 1) {
