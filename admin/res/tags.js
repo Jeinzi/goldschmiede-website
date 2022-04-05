@@ -38,6 +38,7 @@ function selectTag(tag) {
     $("#button-text-color").css("background-color", tag.css("background-color"));
 }
 
+
 function showChanges() {
     tag = getActiveTag();
     tag.css("background-color", getCurrentColor());
@@ -49,6 +50,7 @@ $('#input-name').on('input', function() {
 	showChanges();
 });
 
+
 $('#input-color').on('input', function() {
     $("#button-text-color").css("background-color", getCurrentColor());
 	showChanges();
@@ -57,19 +59,39 @@ $('#input-color').on('input', function() {
 
 $(document).on("click", ".badge", function() {
     selectTag($(this));
+    resetUploadButton();
 });
 
+
 $("#button-upload").click(function() {
-    $.get("update-tag", {id: getActiveId(), name: getCurrentName(), color: getCurrentColor().slice(1,7), textColor: getCurrentTextColor().slice(1,7)}, function(data) {
-        if (data == 0) {
-            return;
-        }
+    var btn = $(this);
+    $.get("update-tag", {
+        id: getActiveId(),
+        name: getCurrentName(),
+        color: getCurrentColor().slice(1,7),
+        textColor: getCurrentTextColor().slice(1,7)
+    },
+    function(response) {
+        var newClass = (response == 1 ? "btn-success" : "btn-danger");
+        btn.addClass(newClass);
     });
 });
 
+
+function resetUploadButton() {
+    $("#button-upload").removeClass("btn-success")
+                       .removeClass("btn-danger");
+}
+
+
+$("#input-name").on("input", function() {
+    resetUploadButton();
+});
+
+
 $("#button-delete").click(function() {
-    $.get("update-tag", {delete: true, id: getActiveId()}, function(data) {
-        if (data == 0) {
+    $.get("update-tag", {delete: true, id: getActiveId()}, function(response) {
+        if (response == 0) {
             return;
         }
         tag = getActiveTag();
