@@ -36,9 +36,11 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 				$firstFileName = $row["fileName"];
 				$first = false;
 			}
-			echo "<a href='#' onclick='return false;' class='list-group-item list-group-item-action$additionalClasses' data-id='" . $row["id"] . "'>"
-					. $row["fileName"]
-					. "</a>";
+			template("gallery-list-item", array(
+				"name"    => $row["fileName"],
+				"id"      => $row["id"],
+				"classes" => $additionalClasses,
+			));
 		}
 		return $firstFileName;
 	}
