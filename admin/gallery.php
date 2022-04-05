@@ -93,9 +93,6 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 					<div class="list-group-item">
 							<div class="d-flex w-100 justify-content-between">
 								<h4 class="mb-0">Galerie</h4>
-								<button class="btn">
-									<img src="/svg/plus-square.svg" alt="Hinzufügen-Symbol">
-								</button>
 							</div>
 					</div>
 					<?php
@@ -115,8 +112,12 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 
 					<!-- Tags -->
 					<div id="tag-container" class="col-lg-4 col-xl-2 mb-2">
-						<h3 class="border-bottom pb-1 d-none d-lg-block">Tags</h3>
-						<span id="add-tag" title="Tags hinzufügen" class="badge badge-primary" data-toggle="modal" data-target="#tag-modal">+</span>
+						<h3 class="border-bottom pb-1 d-none d-lg-block">
+							Tags
+							<button title="Tags hinzufügen" class="btn btn-outline-input btn-outline-secondary btn-sm" data-toggle="modal" data-target="#tag-modal" style="float: right;">
+                <img src="/svg/plus.svg" alt="Plus-Zeichen">
+              </button>
+						</h3>
 					</div>
 				</div>
 				<div class="row">
@@ -212,7 +213,7 @@ $(".tag").click(function() {
 });
 
 function outputTags() {
-	$("#tag-container").children("span:not(#add-tag)").remove();
+	$("#tag-container").children("span").remove();
 	$.get("get-tags", {id: getActiveListItemId()}, function(data) {
 		data = JSON.parse(data);
 		data.forEach(function(item, i) {

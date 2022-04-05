@@ -54,9 +54,6 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
 					<div class="list-group-item">
   						<div class="d-flex w-100 justify-content-between">
   							<h4 class="mb-0">Banner</h4>
-  							<button class="btn">
-								<img src="/svg/plus-square.svg" alt="Hinzufügen-Symbol">
-							</button>
   						</div>
 					</div>
 					<?php

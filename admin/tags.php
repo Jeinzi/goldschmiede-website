@@ -31,7 +31,7 @@ if (!isset($_SESSION['goldsmithLoggedIn'])) {
     <div class="row">
         <div class="col-12">
             <h1 class="main-heading border-bottom">Tags
-                <button id="button-add-tag" class="btn btn-outline-input" style="float: right;">
+                <button id="button-add-tag" title="Tags hinzufügen" class="btn btn-outline-input btn-outline-secondary" style="float: right;">
                     <img src="/svg/plus.svg" alt="Plus-Zeichen">
                 </button>
             </h1>
