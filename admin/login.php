@@ -18,8 +18,8 @@ if (isset($_SESSION['goldsmithLoggedIn'])) {
 	<div class="container-login d-flex" style="flex-direction: column">
 		<div id="container-card">
 			<div class="card text-center card-login">
-				<div id="login-header" class="card-header">
-					Backend-Login
+				<div class="card-header">
+					<h5 id="login-heading">Backend-Login</h5>
 				</div>
 				<div class="card-body">
 					<div class="input-group mb-3">

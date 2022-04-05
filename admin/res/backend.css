@@ -1,4 +1,3 @@
-/* Adapted for Bootstrap 4. */
 .container-login {
 	position: absolute;
 	height: 100%;
@@ -16,8 +15,8 @@
 	width: 100%;
 }
 
-#login-header {
-	font-family: serif;/* Todo: Not necessary if the font familily for all headings is defined in general.css */
+#login-heading {
+	margin: 0px;
 }
 
 .card-login {
@@ -71,7 +70,6 @@
 	}
 }
 
-
 .tag-x {
 	cursor: pointer;
 }
@@ -83,38 +81,4 @@
 .tag {
 	cursor: pointer;
 	margin-right: 0.25rem;
-}
-
-
-
-/* Legacy code. */
-
-.input-group-spaced {
-	margin-top: 5px;
-	margin-bottom: 5px;
-}
-
-.btn-group-submit {
-	margin-top: 30px;
-}
-
-.input-group {
-	margin-bottom: 20px;
-}
-
-.refresh-icon {
-	float: right;
-	margin-right: 5px;
-	cursor: pointer;
-	animation-duration: 1000ms;
-	animation-name: none;
-}
-
-@keyframes rotate180 {
-	0% {
-		transform: rotateZ(0deg);
-	}
-	100% {
-		transform: rotateZ(180deg);
-	}
 }
