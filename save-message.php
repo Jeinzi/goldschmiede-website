@@ -103,7 +103,7 @@ if (!$isSpam) {
 }
 
 
-if ($fileSuccess && ($isSpam || $mailSuccess)) {
+if ($fileSuccess /* && ($isSpam || $mailSuccess) */) {
     header('Location: thanks?success=1');
 }
 else {
