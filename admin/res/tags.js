@@ -30,6 +30,10 @@ function getCurrentName() {
 }
    
 function selectTag(tag) {
+    if (tag.length == 0) {
+        // No tag passed to function.
+        return;
+    }
     getActiveTag().removeClass("activeBadge");
     tag.addClass("activeBadge");
     $("#input-name").val(tag.text());
@@ -84,6 +88,10 @@ $("#input-name").keypress(function(e) {
 
 function updateTag() {
     id = getActiveId();
+    if (getActiveTag().length == 0) {
+        alert("Bitte erst einen Tag hinzufügen.");
+        return;
+    }
     $.get("update-tag", {
         id: getActiveId(),
         name: getCurrentName(),
@@ -124,6 +132,9 @@ $("#button-delete").click(function() {
 });
 
 $("#button-delete-definitely").click(function() {
+    if (getActiveId() == null) {
+        return;
+    }
     $.get("update-tag", {delete: true, id: getActiveId()}, function(response) {
         if (response == 0) {
             return;
@@ -139,7 +150,7 @@ $("#button-delete-definitely").click(function() {
             tag.remove();
         }
         else {
-            alert("New tag creation not supported.")
+            tag.remove();
         }
     });
 });
