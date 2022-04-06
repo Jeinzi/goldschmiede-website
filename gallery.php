@@ -13,6 +13,25 @@
 	<div class="row">
 		<div class="col-12 text-center">
 <?php
+	$connection = connectdB();
+
+	// Get tag id from name.
+	if (isset($_GET["tag"])) {
+		try {
+			$query = $connection->prepare("SELECT id FROM tags WHERE name=?;");
+			$result = $query->execute(array($_GET["tag"]));
+		}
+		catch (PDOException $e) {
+			alert("Exception: Kann Tags nicht abfragen.");
+			exit;
+		}
+		if ($result === true && $query->rowCount() != 0) {
+			$tagId = $query->fetch(PDO::FETCH_ASSOC)["id"];
+		}
+	}
+
+
+
 	$imgPath = "img/";
 	$thumbnailDir = "thumbnails/";
 	$thumbnailPath = $imgPath . $thumbnailDir;
@@ -29,9 +48,20 @@
 
 	// Get image names and (sub-)titles from database.
 	$firstImage = "";
-	$connection = connectdB();
-	$query = $connection->prepare("SELECT fileName,title,subtitle FROM galleryImages");
-	$result = $query->execute();
+	try {
+		if (isset($tagId)) {
+			$query = $connection->prepare("SELECT fileName,title,subtitle FROM galleryImages,galleryTags WHERE galleryTags.tagId=? AND galleryTags.imgId=galleryImages.id;");
+			$result = $query->execute(array($tagId));
+		}
+		else {
+			$query = $connection->prepare("SELECT fileName,title,subtitle FROM galleryImages;");
+			$result = $query->execute();
+		}
+	}
+	catch (PDOException $e) {
+		alert("Exception: Kann Bilder nicht abfragen.");
+		exit;
+	}
 	
 	while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 		$name = $row["fileName"];
