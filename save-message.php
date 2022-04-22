@@ -12,6 +12,8 @@ $spamKeywords = array(
     "bitcoin",
     " ceo ",
     " seo ",
+    "investment",
+    "get-profitshere.life",
 );
 
 
