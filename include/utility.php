@@ -1,7 +1,7 @@
 <?php
 // Adds a fixed alert to the bottom of the page.
-function alert($text) {
-	echo '<div class="alert alert-danger alert-dismissible alert-static mx-auto" role="alert">';
+function alert($text, $alertClass="alert-danger") {
+	echo '<div class="alert ' . $alertClass . ' alert-dismissible alert-static mx-auto" role="alert">';
 	echo $text;
 	echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 	<span aria-hidden="true">&times;</span>

@@ -14,6 +14,7 @@
 			<li class="nav-item" style="display: none;"><a class="nav-link" href="/javascript-licenses" data-jslicense="1">Javascript-Lizenzen</a></li>
 		</ul>
 		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" href="change-password">Passwort ändern</a></li>
 			<li class="nav-item">
 				<a class="nav-link" href="logout"><?php echo $_SESSION['username']; ?> ausloggen</a>
 			</li>
