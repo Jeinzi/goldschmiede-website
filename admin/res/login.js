@@ -4,9 +4,9 @@ $("#login-button").click(function() {
 
 $(".card-login").on('keypress',function(e) {
   // If enter has been pressed.
-    if (e.which == 13) {
-        checkLogin();
-    }
+  if (e.which == 13) {
+    checkLogin();
+  }
 });
 
 function checkLogin() {
@@ -45,23 +45,23 @@ function swingAgain() {
 }
 
 function sendForm(path, params, method) {
-    method = method || "post";
+  method = method || "post";
 
-    var form = document.createElement("form");
-    form.setAttribute("method", method);
-    form.setAttribute("action", path);
+  var form = document.createElement("form");
+  form.setAttribute("method", method);
+  form.setAttribute("action", path);
 
-    for (var key in params) {
-        if (params.hasOwnProperty(key)) {
-            var hiddenField = document.createElement("input");
-            hiddenField.setAttribute("type", "hidden");
-            hiddenField.setAttribute("name", key);
-            hiddenField.setAttribute("value", params[key]);
+  for (var key in params) {
+    if (params.hasOwnProperty(key)) {
+      var hiddenField = document.createElement("input");
+      hiddenField.setAttribute("type", "hidden");
+      hiddenField.setAttribute("name", key);
+      hiddenField.setAttribute("value", params[key]);
 
-            form.appendChild(hiddenField);
-        }
+      form.appendChild(hiddenField);
     }
+  }
 
-    document.body.appendChild(form);
-    form.submit();
+  document.body.appendChild(form);
+  form.submit();
 }

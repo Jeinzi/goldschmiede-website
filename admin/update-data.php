@@ -2,15 +2,15 @@
 // Check for existing session.
 session_start();
 if (!isset($_SESSION['goldsmithLoggedIn'])) {
-    header('Location: .');
-    exit;
+  header('Location: .');
+  exit;
 }
 include("../include/utility.php");
 
 
 if (!isset($_GET['path']) || !isset($_GET['id']) || !isset($_GET['value'])) {
-    echo 0;
-    exit;
+  echo 0;
+  exit;
 }
 // The column to modify, in the format table.column.
 $path = $_GET['path'];
@@ -22,57 +22,57 @@ $value = $_GET['value'];
 
 // The tables and columns that are allowed to be modified in this generic way.
 $permittedCols = [
-    "imprint" => [
-        "name",
-        "street",
-        "city",
-        "phone",
-        "email",
-        "vatId"
-    ],
-    "banners" => [
-        "active",
-        "title",
-        "subtitle"
-    ],
-    "galleryImages" => [
-        "title",
-        "subtitle",
-        "price"
-    ],
-    "settings" => [
-        "websiteTitle",
-        "contactSubject",
-        "contactFrom",
-        "contactSender",
-        "contactReplyTo"
-    ]
+  "imprint" => [
+    "name",
+    "street",
+    "city",
+    "phone",
+    "email",
+    "vatId"
+  ],
+  "banners" => [
+    "active",
+    "title",
+    "subtitle"
+  ],
+  "galleryImages" => [
+    "title",
+    "subtitle",
+    "price"
+  ],
+  "settings" => [
+    "websiteTitle",
+    "contactSubject",
+    "contactFrom",
+    "contactSender",
+    "contactReplyTo"
+  ]
 ];
 
 // Check if the requested colum is part of the permittedCols array.
 $pathArray = explode(".", $path, 2);
 if (count($pathArray) != 2) {
-    echo 0;
-    exit;
+  echo 0;
+  exit;
 }
 
 $table = $pathArray[0];
 $column = $pathArray[1];
 if (array_key_exists($table, $permittedCols) &&
-    in_array($column, $permittedCols[$table], true))
+  in_array($column, $permittedCols[$table], true))
 {
-    $connection = connectdB();
-    $query = $connection->prepare("UPDATE " . $table . " SET " . $column . "=? WHERE id=?");
-    $result = $query->execute(array($value, $id));
-    if ($result === true) {
-        if ($query->rowCount() > 0) {
-            echo 1;
-        }
-        else {
-            echo 0;
-        }
-        exit;
+  $connection = connectdB();
+  $query = $connection->prepare("UPDATE " . $table . " SET " . $column . "=? WHERE id=?");
+  $result = $query->execute(array($value, $id));
+  if ($result === true) {
+    if ($query->rowCount() > 0) {
+      echo 1;
     }
+    else {
+      echo 0;
+    }
+    exit;
+  }
 }
 
 echo 0;

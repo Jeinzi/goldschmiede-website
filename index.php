@@ -66,7 +66,7 @@
   generateCarousel();
 
 
-    include("index-content.html");
+  include("index-content.html");
 ?>
 </body>
 </html>

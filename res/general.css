@@ -1,22 +1,22 @@
 h1,h2,h3,h4,h5,h6 {
-    font-family: serif;
+  font-family: serif;
 }
 
 .main-heading {
-    padding-bottom: 5px;
-    padding-top: 2%;
-    margin-bottom: 20px;
+  padding-bottom: 5px;
+  padding-top: 2%;
+  margin-bottom: 20px;
 }
 
 .btn-outline-input {
-    border-color: rgb(206, 212, 218);
+  border-color: rgb(206, 212, 218);
 }
 
 .alert-static {
-    position: fixed;
-    top: auto;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
+  position: fixed;
+  top: auto;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
 }
