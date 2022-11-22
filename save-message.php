@@ -87,7 +87,6 @@ if (!$isSpam) {
   }
   $settingsRow = $query->fetch(PDO::FETCH_ASSOC);
 
-
   $query = $connection->prepare("select * from freya.contactEmails;");
   $result = $query->execute();
   if ($result === false) {
@@ -97,30 +96,27 @@ if (!$isSpam) {
     $firstRow = true;
     $recipient = '';
     $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    // Add all email addresses to an array.
+    $recipientArray = array();
     foreach ($rows as $row) {
-      if ($firstRow) {
-        $firstRow = false;
-      }
-      else {
-        $recipient .= ",";
-      }
-      $recipient .= "";
+      $recipientArray[] = $row["email"];
     }
+    // Join that array into a comma separated string.
+    $recipients = implode(",", $recipientArray);
 
     $subject = $settingsRow["contactSubject"];
     $message = $notificationText;
     $header = 'From: ' . $settingsRow["contactFrom"] . "\r\n" .
-    'Reply-To: ' . $settingsRow["contactReplyTo"] . "\r\n" . // TODO: Needed?
-    'Date: ' . date('r') . "\r\n" .
-    'Sender: ' . $settingsRow["contactSender"] . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
+              'Date: ' . date('r') . "\r\n" .
+              'Sender: ' . $settingsRow["contactSender"] . "\r\n" .
+              'X-Mailer: PHP/' . phpversion();
 
-    $mailSuccess = mail($recipient, $subject, $message, $header);
+    $mailSuccess = mail($recipients, $subject, $message, $header);
   }
 }
 
-
-if ($fileSuccess /* && ($isSpam || $mailSuccess) */) {
+if ($fileSuccess && ($isSpam || $mailSuccess)) {
   header('Location: thanks?success=1');
 }
 else {
