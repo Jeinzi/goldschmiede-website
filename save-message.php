@@ -20,6 +20,9 @@ $spamKeywords = array(
   "hobhob",
   "crytohob",
   "robot",
+  "Krypto",
+  " reich ",
+  " rich ",
 );
 
 
