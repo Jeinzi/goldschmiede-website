@@ -14,6 +14,12 @@ $spamKeywords = array(
   " seo ",
   "investment",
   "get-profitshere.life",
+  "take-profitnow.life",
+  "2f-2f.de",
+  "https://hob.",
+  "hobhob",
+  "crytohob",
+  "robot",
 );
 
 
@@ -30,8 +36,9 @@ if (!file_exists($spamPath)) {
 // Sort out spam.
 $isSpam = false;
 $textLowercase = strtolower($text);
+$nameLowercase = strtolower($name);
 foreach ($spamKeywords as $keyword) {
-  if (str_contains($textLowercase, $keyword)) {
+  if (str_contains($textLowercase, $keyword) || str_contains($nameLowercase, $keyword)) {
     $isSpam = true;
     break;
   }
@@ -39,8 +46,8 @@ foreach ($spamKeywords as $keyword) {
 
 // Compile notification text.
 $notificationText = "Name: " . $name . "\n" .
-          "Kontakt: " . $contact . "\n" .
-          "Text:\n" . $text;
+                    "Kontakt: " . $contact . "\n" .
+                    "Text:\n" . $text;
 
 // Write to file.
 $fileSuccess = true;
