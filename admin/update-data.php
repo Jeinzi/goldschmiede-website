@@ -2,8 +2,8 @@
 // Check for existing session.
 session_start();
 if (!isset($_SESSION['goldsmithLoggedIn'])) {
-	header('Location: .');
-	exit;
+    header('Location: .');
+    exit;
 }
 include("../include/utility.php");
 
@@ -71,7 +71,7 @@ if (array_key_exists($table, $permittedCols) &&
         else {
             echo 0;
         }
-    	exit;
+        exit;
     }
 }
 

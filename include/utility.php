@@ -1,10 +1,10 @@
 <?php
 // Adds a fixed alert to the bottom of the page.
 function alert($text, $alertClass="alert-danger") {
-	echo '<div class="alert ' . $alertClass . ' alert-dismissible alert-static mx-auto" role="alert">';
-	echo $text;
-	echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-	<span aria-hidden="true">&times;</span>
+  echo '<div class="alert ' . $alertClass . ' alert-dismissible alert-static mx-auto" role="alert">';
+  echo $text;
+  echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
   </button>';
   echo '</div>';
 }
@@ -51,16 +51,16 @@ function connectDb($authFile = __DIR__ . "/db-credentials") {
 
 
 function getWebsiteTitle() {
-	$connection = connectDb();
-	$query = $connection->prepare("SELECT websiteTitle FROM settings WHERE id=1");
-	$result = $query->execute();
-	if ($result === false) {
-		alert("Failed to query settings.");
-	}
+  $connection = connectDb();
+  $query = $connection->prepare("SELECT websiteTitle FROM settings WHERE id=1");
+  $result = $query->execute();
+  if ($result === false) {
+    alert("Failed to query settings.");
+  }
 
-	$first = true;
-	$row = $query->fetch(PDO::FETCH_ASSOC);
-	return $row["websiteTitle"];
+  $first = true;
+  $row = $query->fetch(PDO::FETCH_ASSOC);
+  return $row["websiteTitle"];
 }
 
 
@@ -71,18 +71,18 @@ function getWebsiteTitle() {
  * @param $args - Associative array of variables to use in the template.
  */
 function template($name, $args) {
-	$path = $_SERVER["DOCUMENT_ROOT"] . "/res/template/" . $name . ".php";
-	if (!file_exists($path)) {
-		echo "No file: " . $path;
-		return;
-	}
-	if (!is_array($args)) {
-		echo "No array";
-		return;
-	}
+  $path = $_SERVER["DOCUMENT_ROOT"] . "/res/template/" . $name . ".php";
+  if (!file_exists($path)) {
+    echo "No file: " . $path;
+    return;
+  }
+  if (!is_array($args)) {
+    echo "No array";
+    return;
+  }
   if (file_exists($path) && is_array($args)) {
     extract($args);
-		include($path);
+    include($path);
   }
 }
 ?>

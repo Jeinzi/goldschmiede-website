@@ -2,8 +2,8 @@
 // Check for existing session.
 session_start();
 if (!isset($_SESSION['goldsmithLoggedIn'])) {
-	header('Location: .');
-	exit;
+    header('Location: .');
+    exit;
 }
 
 include("../include/utility.php");
@@ -63,13 +63,13 @@ if (array_key_exists($table, $permittedCols) &&
     $query = $connection->prepare("SELECT " . $column . " FROM " . $table . " WHERE id=?");
     $result = $query->execute(array($id));
     if ($result === false) {
-    	exit;
+        exit;
     }
 }
 
 // Create JSON array string.
 function appendColumnToJson(&$jsonString, $columnName, $row) {
-	$jsonString .= "'$columnName': '" . $row[$columnName] . "',";
+    $jsonString .= "'$columnName': '" . $row[$columnName] . "',";
 }
 
 $row = $query->fetch(PDO::FETCH_ASSOC);

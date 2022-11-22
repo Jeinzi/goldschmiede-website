@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="de">
 <head>
-	<?php include("include/head.php"); ?>
-	<title><?= $websiteTitle ?> - Javascript-Lizenzen</title>
+    <?php include("include/head.php"); ?>
+    <title><?= $websiteTitle ?> - Javascript-Lizenzen</title>
     <style>
         td,th {
             border: 1px solid gray;
@@ -12,11 +12,11 @@
             margin-top: 10%;
         }
         a {}
-	</style>
+    </style>
 </head>
 <body>
 <?php
-	include("include/navbar.php");
+    include("include/navbar.php");
 ?>
 <div class="container">
 

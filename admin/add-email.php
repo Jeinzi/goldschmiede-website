@@ -2,8 +2,8 @@
 // Check for existing session.
 session_start();
 if (!isset($_SESSION['goldsmithLoggedIn'])) {
-	header('Location: .');
-	exit;
+    header('Location: .');
+    exit;
 }
 include("../include/utility.php");
 
@@ -20,7 +20,7 @@ if ($result === true) {
     $query = $connection->prepare("SELECT LAST_INSERT_ID();");
     $query->execute();
     echo $query->fetch(PDO::FETCH_ASSOC)["LAST_INSERT_ID()"];
-	exit;
+    exit;
 }
 
 echo 0;

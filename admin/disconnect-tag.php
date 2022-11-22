@@ -2,8 +2,8 @@
 // Check for existing session.
 session_start();
 if (!isset($_SESSION['goldsmithLoggedIn'])) {
-	header('Location: .');
-	exit;
+  header('Location: .');
+  exit;
 }
 include('../include/utility.php');
 

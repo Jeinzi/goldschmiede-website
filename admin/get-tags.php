@@ -2,8 +2,8 @@
 // Check for existing session.
 session_start();
 if (!isset($_SESSION['goldsmithLoggedIn'])) {
-	header('Location: .');
-	exit;
+    header('Location: .');
+    exit;
 }
 
 include("../include/utility.php");
@@ -18,7 +18,7 @@ $connection = connectdB();
 $query = $connection->prepare("select tagId,name,color,textColor from freya.galleryTags,freya.tags WHERE galleryTags.imgId=? AND galleryTags.tagId = tags.id;");
 $result = $query->execute(array($id));
 if ($result === false) {
-	exit;
+    exit;
 }
 
 $firstRow = true;

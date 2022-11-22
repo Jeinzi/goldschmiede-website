@@ -51,13 +51,13 @@ function showChanges() {
 }
 
 $("#input-name").on("input", function() {
-	showChanges();
+    showChanges();
 });
 
 
 $("#input-color").on("input", function() {
     $("#button-text-color").css("background-color", getCurrentColor());
-	showChanges();
+    showChanges();
 });
 
 
@@ -81,8 +81,8 @@ $("#button-upload").click(function() {
 
 $("#input-name").keypress(function(e) {
     if(e.which == 13) {
-		updateTag();
-	}
+        updateTag();
+    }
 });
 
 
