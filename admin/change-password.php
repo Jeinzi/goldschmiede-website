@@ -71,15 +71,22 @@ if (isset($_POST['old-pw']) &&
   // Update database.
   if ($success) {
     $hash = password_hash($_POST['new-pw'], PASSWORD_DEFAULT);
-    $connection = connectdB();
-    $query = $connection->prepare("UPDATE admins SET hash=? WHERE username=?;");
-    $result = $query->execute(array($hash, $_SESSION['username']));
-    if ($result === true && $query->rowCount() > 0) {
-      $message = "Passwort erfolgreich geändert :)";
+    try {
+      $connection = connectdB();
+      $query = $connection->prepare("UPDATE admins SET hash=? WHERE username=?;");
+      $result = $query->execute(array($hash, $_SESSION['username']));
+
+      if ($result === true && $query->rowCount() > 0) {
+        $message = "Passwort erfolgreich geändert :)";
+      }
+      else {
+        $success = false;
+        $message = "Neues Passwort konnte nicht gespeichert werden.";
+      }
     }
-    else {
+    catch (PDOException $e) {
       $success = false;
-      $message = "Neues Passwort konnte nicht gespeichert werden.";
+      $message = "Problem beim Datenbankzugriff.";
     }
   }
 
