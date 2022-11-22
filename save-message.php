@@ -61,8 +61,13 @@ else {
 
 try {
   $file = fopen($path, "a");
-  fwrite($file, $notificationText);
-  fclose($file);
+  if ($file === false) {
+    $fileSuccess = false;
+  }
+  else {
+    fwrite($file, $notificationText);
+    fclose($file);
+  }
 }
 catch (Exception $e) {
   $fileSuccess = false;
