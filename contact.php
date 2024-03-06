@@ -32,6 +32,14 @@
         <input type="text" name="contact" class="form-control" placeholder="Wie kann ich dich erreichen?" aria-label="Contact" aria-describedby="input-contact-prepend">
       </div>
     </div>
+    <div class="col-lg-6" id="phone-input-div">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="input-phone-prepend">Telefon</span>
+        </div>
+        <input type="text" name="phone" class="form-control" placeholder="Bitte NICHT Telefonnummer eintragen!" tabindex="-1" autocomplete="off" aria-label="phone" aria-describedby="input-phone-prepend">
+      </div>
+    </div>
   </div>
   <div class="row">
     <div class="col-12">

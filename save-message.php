@@ -49,8 +49,15 @@ foreach ($spamKeywords as $keyword) {
 
 // Compile notification text.
 $notificationText = "Name: " . $name . "\n" .
-                    "Kontakt: " . $contact . "\n" .
-                    "Text:\n" . $text;
+                    "Kontakt: " . $contact . "\n";
+
+// This phone field is hidden, so if it is filled out, it was a bot.
+if ($_POST['phone'] != "") {
+  $isSpam = true;
+  $notificationText .= "Telefon: " . $_POST['phone'] . "\n";
+}
+
+$notificationText .= "Text:\n" . $text;
 
 // Write to file.
 $fileSuccess = true;
